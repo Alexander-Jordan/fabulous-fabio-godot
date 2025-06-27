@@ -14,7 +14,30 @@ config/name="Super Mario Bros."
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=256
+window/size/viewport_height=240
+window/size/window_width_override=512
+window/size/window_height_override=480
+window/stretch/mode="viewport"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "red",
+"res://common/": "orange",
+"res://config/": "yellow",
+"res://entities/": "green",
+"res://localization/": "teal",
+"res://stages/": "blue",
+"res://ui/": "purple",
+"res://utilities/": "pink"
+}
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
