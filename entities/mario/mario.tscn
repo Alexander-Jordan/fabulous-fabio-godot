@@ -377,6 +377,7 @@ metadata/_custom_type_script = "uid://dn48jr40isexb"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_bolac")
+autoplay = "default"
 offset = Vector2(0, -16)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -1,9 +1,19 @@
-[gd_scene load_steps=3 format=4 uid="uid://kyma8fsdlynh"]
+[gd_scene load_steps=4 format=4 uid="uid://kyma8fsdlynh"]
 
 [ext_resource type="TileSet" uid="uid://bdb23t1a542x1" path="res://stages/main/tileset_default.tres" id="1_6almw"]
 [ext_resource type="PackedScene" uid="uid://die8x6nmdl1fh" path="res://entities/mario/mario.tscn" id="1_60rri"]
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_60rri"]
+normal = Vector2(1, 0)
+
 [node name="Main" type="Node2D"]
+
+[node name="boundaries" type="Node" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="boundaries"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/StaticBody2D"]
+shape = SubResource("WorldBoundaryShape2D_60rri")
 
 [node name="Mario" parent="." instance=ExtResource("1_60rri")]
 position = Vector2(40, 16)
