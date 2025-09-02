@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://o0r7tp6bkmku"
-path="res://.godot/imported/items.png-b76ef04652e9007f5f3598278b5cd340.ctex"
+uid="uid://dcydox1k7vvwk"
+path="res://.godot/imported/fabio.png-d3b1cbf1e0f415042f93f0c6bcf911f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/items/items.png"
-dest_files=["res://.godot/imported/items.png-b76ef04652e9007f5f3598278b5cd340.ctex"]
+source_file="res://entities/fabio/fabio.png"
+dest_files=["res://.godot/imported/fabio.png-d3b1cbf1e0f415042f93f0c6bcf911f6.ctex"]
 
 [params]
 

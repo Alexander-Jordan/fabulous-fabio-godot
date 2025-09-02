@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://die8x6nmdl1fh"]
 
-[ext_resource type="Texture2D" uid="uid://dcydox1k7vvwk" path="res://entities/mario/mario.png" id="1_eb7rr"]
-[ext_resource type="Script" uid="uid://dn48jr40isexb" path="res://entities/mario/mario.gd" id="1_ks7st"]
+[ext_resource type="Texture2D" uid="uid://dcydox1k7vvwk" path="res://entities/fabio/fabio.png" id="1_eb7rr"]
+[ext_resource type="Script" uid="uid://dn48jr40isexb" path="res://entities/fabio/fabio.gd" id="1_ks7st"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_255qn"]
 atlas = ExtResource("1_eb7rr")

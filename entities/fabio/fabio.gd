@@ -1,4 +1,4 @@
-class_name Mario extends CharacterBody2D
+class_name Fabio extends CharacterBody2D
 
 #region CONSTANTS
 ## Greatest fall speed.
