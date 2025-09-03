@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 				animated_sprite_2d.speed_scale = (absf(velocity.x) / RUN_SPEED_MAX) * 2.0
 				animated_sprite_2d.speed_scale = clampf(animated_sprite_2d.speed_scale, 0.0, 2.0)
 		else:
-			animated_sprite_2d.animation = 'default'
+			animated_sprite_2d.animation = 'idle'
 	
 	velocity.y -= jump_force * delta
 	if jump_force != 0.0:
