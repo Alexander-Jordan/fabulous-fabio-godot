@@ -1,7 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://die8x6nmdl1fh"]
+[gd_scene load_steps=14 format=3 uid="uid://die8x6nmdl1fh"]
 
 [ext_resource type="Texture2D" uid="uid://dcydox1k7vvwk" path="res://entities/fabio/fabio.png" id="1_eb7rr"]
 [ext_resource type="Script" uid="uid://dn48jr40isexb" path="res://entities/fabio/fabio.gd" id="1_ks7st"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eo4fn"]
+atlas = ExtResource("1_eb7rr")
+region = Rect2(32, 32, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ixk7r"]
 atlas = ExtResource("1_eb7rr")
@@ -37,6 +41,14 @@ region = Rect2(0, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bolac"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eo4fn")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ixk7r")
@@ -79,7 +91,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -91,16 +103,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ks7st"]
-size = Vector2(10, 15)
+size = Vector2(8, 15)
 
 [node name="Mario" type="CharacterBody2D"]
+z_index = 10
 script = ExtResource("1_ks7st")
 metadata/_custom_type_script = "uid://dn48jr40isexb"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_bolac")
-animation = &"slide"
+animation = &"crouch"
 autoplay = "idle"
 offset = Vector2(0, -16)
 
