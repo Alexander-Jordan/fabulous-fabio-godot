@@ -1,0 +1,91 @@
+[gd_scene load_steps=14 format=3 uid="uid://cpcv0pykwenmm"]
+
+[ext_resource type="Script" uid="uid://cinn5yixd7nw6" path="res://common/collect/collectable_2d.gd" id="1_ciy41"]
+[ext_resource type="Script" uid="uid://crx2nl2kyfb41" path="res://entities/coin/coin.gd" id="1_sogop"]
+[ext_resource type="Texture2D" uid="uid://bmn2xcsnlqvvo" path="res://entities/coin/coin.png" id="2_tvniy"]
+[ext_resource type="Script" uid="uid://dx4t6l0hurfew" path="res://common/spawnable/spawnable_2d.gd" id="3_tvniy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6beie"]
+atlas = ExtResource("2_tvniy")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqhkd"]
+atlas = ExtResource("2_tvniy")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c06b4"]
+atlas = ExtResource("2_tvniy")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5wv18"]
+atlas = ExtResource("2_tvniy")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd0og"]
+atlas = ExtResource("2_tvniy")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otkm7"]
+atlas = ExtResource("2_tvniy")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qli5p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6beie")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqhkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c06b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5wv18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yd0og")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otkm7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sogop"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5wv18"]
+radius = 7.0
+
+[node name="Coin" type="RigidBody2D"]
+z_index = 5
+collision_layer = 0
+collision_mask = 2
+lock_rotation = true
+script = ExtResource("1_sogop")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qli5p")
+autoplay = "default"
+frame_progress = 0.265464
+
+[node name="Collectable2D" type="Area2D" parent="."]
+script = ExtResource("1_ciy41")
+disabled = true
+identifier = "coin"
+metadata/_custom_type_script = "uid://cinn5yixd7nw6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D"]
+shape = SubResource("CircleShape2D_sogop")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_5wv18")
+
+[node name="Spawnable2D" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
+script = ExtResource("3_tvniy")
+root_node = NodePath("..")
+metadata/_custom_type_script = "uid://dx4t6l0hurfew"

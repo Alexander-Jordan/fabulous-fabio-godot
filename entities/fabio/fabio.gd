@@ -22,7 +22,13 @@ var animation: String = 'idle':
 			return
 		animation = a
 		animated_sprite_2d.animation = a
-var crouching: bool = false
+var crouching: bool = false:
+	set(c):
+		if c == crouching:
+			return
+		crouching = c
+		if c:
+			direction = 0.0
 var direction: float = 0.0:
 	set(d):
 		if d == direction:
@@ -35,10 +41,12 @@ var jump_time: float = 0.0
 
 #region FUNCTIONS
 func _process(delta: float) -> void:
-	crouching = Input.is_action_pressed('down')
-	if crouching:
-		direction = 0.0
+	if Input.is_action_pressed('down'):
+		crouching = true
 		return
+	
+	if Input.is_action_just_released('down') and is_on_floor():
+		crouching = false
 	
 	direction = Input.get_axis('left', 'right')
 	
@@ -66,7 +74,9 @@ func _physics_process(delta: float) -> void:
 		animation = 'crouch'
 		if !is_on_floor() and velocity.y < FALL_SPEED_MAX:
 			velocity.y += (get_gravity().y * 3) * delta
-		move_and_slide()
+		var crouch_collision = move_and_collide(velocity * delta)
+		if crouch_collision:
+			on_crouch_collision(crouch_collision)
 		return
 	
 	if is_on_floor():
@@ -83,4 +93,10 @@ func _physics_process(delta: float) -> void:
 			velocity.y += get_gravity().y * delta
 	
 	move_and_slide()
+
+func on_crouch_collision(collision: KinematicCollision2D) -> void:
+	var collider = collision.get_collider()
+	crouching = false
+	if collider is Crate:
+		collider.disabled = true
 #endregion
