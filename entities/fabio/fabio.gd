@@ -4,7 +4,7 @@ class_name Fabio extends CharacterBody2D
 ## Greatest fall speed.
 const FALL_SPEED_MAX = 1200
 ## The force applied when jumping.
-const JUMP_FORCE = 2000
+const JUMP_FORCE = 1800
 ## How long the player can increase their jump by holding down the jump button.
 const JUMP_TIME: float = 0.25
 ## Speed value to add every frame.
@@ -16,6 +16,19 @@ const RUN_SPEED_MAX = 150
 #region VARIABLES
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
+var animation: String = 'idle':
+	set(a):
+		if a == animation or !['crouch', 'die', 'idle', 'jump', 'run', 'slide'].has(a):
+			return
+		animation = a
+		animated_sprite_2d.animation = a
+var crouching: bool = false:
+	set(c):
+		if c == crouching:
+			return
+		crouching = c
+		if c:
+			direction = 0.0
 var direction: float = 0.0:
 	set(d):
 		if d == direction:
@@ -23,11 +36,28 @@ var direction: float = 0.0:
 		direction = d
 		if d != 0.0:
 			animated_sprite_2d.flip_h = d < 0.0
+var finished: bool = false:
+	set(f):
+		if f == finished:
+			return
+		finished = f
+		direction = 1.0
+		crouching = false
 var jump_time: float = 0.0
 #endregion
 
 #region FUNCTIONS
 func _process(delta: float) -> void:
+	if finished:
+		return
+	
+	if Input.is_action_pressed('down'):
+		crouching = true
+		return
+	
+	if Input.is_action_just_released('down') and is_on_floor():
+		crouching = false
+	
 	direction = Input.get_axis('left', 'right')
 	
 	# initial jump force, applied only when grounded:
@@ -43,28 +73,40 @@ func _process(delta: float) -> void:
 		jump_time = 0.0
 
 func _physics_process(delta: float) -> void:
-	if (direction > 0.0 and velocity.x < RUN_SPEED_MAX) or (direction < 0.0 and velocity.x > -RUN_SPEED_MAX):
+	if !crouching and (direction > 0.0 and velocity.x < RUN_SPEED_MAX) or (direction < 0.0 and velocity.x > -RUN_SPEED_MAX):
 		velocity.x += direction * RUN_SPEED_AMPLIFIER * delta
 	if direction == 0.0:
 		velocity.x -= signf(velocity.x) * RUN_SPEED_AMPLIFIER * delta
 		if velocity.x < 0.01 and velocity.x > -0.01:
 			velocity.x = 0.0
 	
+	if crouching:
+		animation = 'crouch'
+		if !is_on_floor() and velocity.y < FALL_SPEED_MAX:
+			velocity.y += (get_gravity().y * 3) * delta
+		var crouch_collision = move_and_collide(velocity * delta)
+		if crouch_collision:
+			on_crouch_collision(crouch_collision)
+		return
+	
 	if is_on_floor():
 		if velocity.x != 0.0:
-			if direction != 0.0 and signf(direction) != signf(velocity.x) and absf(velocity.x) > 0.1:
-				animated_sprite_2d.animation = 'slide'
+			if direction != 0.0 and signf(direction) != signf(velocity.x):
+				animation = 'slide'
 			else:
-				animated_sprite_2d.animation = 'run'
-				animated_sprite_2d.speed_scale = (absf(velocity.x) / RUN_SPEED_MAX) * 2.0
-				animated_sprite_2d.speed_scale = clampf(animated_sprite_2d.speed_scale, 0.0, 2.0)
+				animation = 'run'
 		else:
-			animated_sprite_2d.animation = 'idle'
+			animation = 'idle'
 	else:
-		animated_sprite_2d.animation = 'jump'
-	
-	if !is_on_floor() and velocity.y < FALL_SPEED_MAX:
-		velocity.y += get_gravity().y * delta
+		animation = 'jump'
+		if velocity.y < FALL_SPEED_MAX:
+			velocity.y += get_gravity().y * delta
 	
 	move_and_slide()
+
+func on_crouch_collision(collision: KinematicCollision2D) -> void:
+	var collider = collision.get_collider()
+	crouching = false
+	if collider is Crate:
+		collider.disabled = true
 #endregion
