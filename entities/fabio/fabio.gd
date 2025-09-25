@@ -36,11 +36,21 @@ var direction: float = 0.0:
 		direction = d
 		if d != 0.0:
 			animated_sprite_2d.flip_h = d < 0.0
+var finished: bool = false:
+	set(f):
+		if f == finished:
+			return
+		finished = f
+		direction = 1.0
+		crouching = false
 var jump_time: float = 0.0
 #endregion
 
 #region FUNCTIONS
 func _process(delta: float) -> void:
+	if finished:
+		return
+	
 	if Input.is_action_pressed('down'):
 		crouching = true
 		return
