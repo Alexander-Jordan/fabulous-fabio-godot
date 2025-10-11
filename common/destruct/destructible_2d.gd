@@ -17,11 +17,14 @@ extends Area2D
 #region SIGNALS
 ## Emitted when destroyed.
 signal destroyed
+## Emitted when destructed/hit.
+signal destructed(amount: int)
 #endregion
 
 #region FUNCTIONS
 ## Called by a destructor to make this destructable take damage.
 func destruct(amount: int = health, audio_stream: AudioStream = null) -> void:
+	destructed.emit(amount)
 	health -= amount
 	if audio_stream != null:
 		audio_stream_player_2d.stream = audio_stream

@@ -2,15 +2,15 @@ class_name Fabio extends CharacterBody2D
 
 #region CONSTANTS
 ## Greatest fall speed.
-const FALL_SPEED_MAX = 1200
+const FALL_SPEED_MAX: int = 1200
 ## The force applied when jumping.
-const JUMP_FORCE = 1800
+const JUMP_FORCE: int = 1800
 ## How long the player can increase their jump by holding down the jump button.
 const JUMP_TIME: float = 0.25
 ## Speed value to add every frame.
-const RUN_SPEED_AMPLIFIER = 600
+const RUN_SPEED_AMPLIFIER: int = 600
 ## Greatest running speed.
-const RUN_SPEED_MAX = 150
+const RUN_SPEED_MAX: int = 150
 #endregion
 
 #region VARIABLES
