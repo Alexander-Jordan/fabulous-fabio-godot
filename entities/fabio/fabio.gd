@@ -18,6 +18,7 @@ const RUN_SPEED_MAX: int = 150
 @onready var destructable_2d: Destructable2D = $Destructable2D
 @onready var destructor_2d: Destructor2D = $Destructor2D
 @onready var timer_stunned: Timer = $timer_stunned
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 var animation: String = 'idle':
 	set(a):
@@ -32,6 +33,7 @@ var crouching: bool = false:
 		crouching = c
 		if c:
 			direction = 0.0
+var dead: bool = false
 var direction: float = 0.0:
 	set(d):
 		if d == direction:
@@ -64,7 +66,7 @@ var stunned: bool = false:
 
 #region FUNCTIONS
 func _process(delta: float) -> void:
-	if finished:
+	if finished or dead:
 		return
 	
 	if Input.is_action_pressed('down'):
@@ -121,8 +123,10 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _ready() -> void:
+	destructable_2d.destroyed.connect(on_destroyed)
 	destructable_2d.destructed.connect(on_destructed)
 	timer_stunned.timeout.connect(on_timer_stunned_timeout)
+	visible_on_screen_notifier_2d.screen_exited.connect(on_screen_exited)
 
 func on_crouch_collision(collision: KinematicCollision2D) -> void:
 	var collider = collision.get_collider()
@@ -130,11 +134,20 @@ func on_crouch_collision(collision: KinematicCollision2D) -> void:
 	if collider is Crate:
 		collider.disabled = true
 
+func on_destroyed() -> void:
+	set_collision_mask_value(1, false)
+
 func on_destructed(_amount: int, from: Vector2) -> void:
 	stunned = true
 	var from_direction: Vector2 = from.direction_to(global_position)
 	velocity = Vector2(from_direction.x * 200, -200)
 	jump_time = 0.0 # prevent jumping mid-stunned
+
+func on_screen_exited() -> void:
+	dead = true
+	direction = 0.0
+	await get_tree().create_timer(1.0).timeout
+	process_mode = PROCESS_MODE_DISABLED
 
 func on_timer_stunned_timeout() -> void:
 	stunned = false
