@@ -15,6 +15,9 @@ const RUN_SPEED_MAX: int = 150
 
 #region VARIABLES
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var destructable_2d: Destructable2D = $Destructable2D
+@onready var destructor_2d: Destructor2D = $Destructor2D
+@onready var timer_stunned: Timer = $timer_stunned
 
 var animation: String = 'idle':
 	set(a):
@@ -44,6 +47,19 @@ var finished: bool = false:
 		direction = 1.0
 		crouching = false
 var jump_time: float = 0.0
+var stunned: bool = false:
+	set(s):
+		if s == stunned:
+			return
+		stunned = s
+		var shader_material: ShaderMaterial = animated_sprite_2d.material
+		shader_material.set_shader_parameter('stunned', s)
+		if s:
+			crouching = false
+			direction = 0.0
+			destructable_2d.process_mode = PROCESS_MODE_DISABLED
+			destructor_2d.process_mode = PROCESS_MODE_DISABLED
+			timer_stunned.start()
 #endregion
 
 #region FUNCTIONS
@@ -77,7 +93,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x += direction * RUN_SPEED_AMPLIFIER * delta
 	if direction == 0.0:
 		velocity.x -= signf(velocity.x) * RUN_SPEED_AMPLIFIER * delta
-		if velocity.x < 0.01 and velocity.x > -0.01:
+		if velocity.x < 10.0 and velocity.x > -10.0:
 			velocity.x = 0.0
 	
 	if crouching:
@@ -98,15 +114,30 @@ func _physics_process(delta: float) -> void:
 		else:
 			animation = 'idle'
 	else:
-		animation = 'jump'
+		animation = 'jump' if !stunned else 'die'
 		if velocity.y < FALL_SPEED_MAX:
 			velocity.y += get_gravity().y * delta
 	
 	move_and_slide()
+
+func _ready() -> void:
+	destructable_2d.destructed.connect(on_destructed)
+	timer_stunned.timeout.connect(on_timer_stunned_timeout)
 
 func on_crouch_collision(collision: KinematicCollision2D) -> void:
 	var collider = collision.get_collider()
 	crouching = false
 	if collider is Crate:
 		collider.disabled = true
+
+func on_destructed(_amount: int, from: Vector2) -> void:
+	stunned = true
+	var from_direction: Vector2 = from.direction_to(global_position)
+	velocity = Vector2(from_direction.x * 200, -200)
+	jump_time = 0.0 # prevent jumping mid-stunned
+
+func on_timer_stunned_timeout() -> void:
+	stunned = false
+	destructor_2d.process_mode = PROCESS_MODE_INHERIT
+	destructable_2d.process_mode = PROCESS_MODE_INHERIT
 #endregion

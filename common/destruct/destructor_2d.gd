@@ -7,6 +7,7 @@ extends Area2D
 @export var audio_streams: Array[AudioStream] = []
 ## The amount of destruction.
 @export_range(1, 10) var destruct_amount: int = 1
+@export var destructable_identifiers: Array[String] = []
 
 ## The collision shape for the destructor.
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
@@ -16,7 +17,8 @@ extends Area2D
 func _ready() -> void:
 	area_entered.connect(func(area: Area2D):
 		if area is Destructable2D:
-			area.destruct(destruct_amount, get_audio())
+			if area.identifier in destructable_identifiers:
+				area.destruct(destruct_amount, global_position, get_audio())
 	)
 
 func get_audio() -> AudioStream:
