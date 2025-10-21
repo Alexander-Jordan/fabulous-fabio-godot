@@ -131,7 +131,7 @@ metadata/_custom_type_script = "uid://dn48jr40isexb"
 material = SubResource("ShaderMaterial_8hku4")
 position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_bolac")
-animation = &"die"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -16)
 

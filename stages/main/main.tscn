@@ -107,7 +107,7 @@ motion_mirroring = Vector2(512, 0)
 centered = false
 
 [node name="Fabio" parent="." instance=ExtResource("1_60rri")]
-position = Vector2(48, 16)
+position = Vector2(48, 208)
 
 [node name="Camera" type="Camera2D" parent="Fabio"]
 limit_left = 0

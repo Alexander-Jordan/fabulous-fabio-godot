@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dke1csv7tv7ku"]
+
+[ext_resource type="FontFile" uid="uid://81bmk42eeoat" path="res://assets/fonts/draconianpixelsminimal/DraconianPixelsMinimal.ttf" id="1_cwq3q"]
+
+[resource]
+default_font = ExtResource("1_cwq3q")

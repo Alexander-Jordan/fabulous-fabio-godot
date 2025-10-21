@@ -91,8 +91,9 @@ func _process(delta: float) -> void:
 		jump_time = 0.0
 
 func _physics_process(delta: float) -> void:
-	if !crouching and (direction > 0.0 and velocity.x < RUN_SPEED_MAX) or (direction < 0.0 and velocity.x > -RUN_SPEED_MAX):
+	if direction != 0.0 and !crouching:
 		velocity.x += direction * RUN_SPEED_AMPLIFIER * delta
+		velocity.x = clampf(velocity.x, -RUN_SPEED_MAX, RUN_SPEED_MAX)
 	if direction == 0.0:
 		velocity.x -= signf(velocity.x) * RUN_SPEED_AMPLIFIER * delta
 		if velocity.x < 10.0 and velocity.x > -10.0:
@@ -147,7 +148,7 @@ func on_screen_exited() -> void:
 	dead = true
 	direction = 0.0
 	await get_tree().create_timer(1.0).timeout
-	process_mode = PROCESS_MODE_DISABLED
+	get_tree().change_scene_to_file("res://stages/menu/menu.tscn")
 
 func on_timer_stunned_timeout() -> void:
 	stunned = false
