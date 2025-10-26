@@ -148,6 +148,7 @@ func on_screen_exited() -> void:
 	dead = true
 	direction = 0.0
 	await get_tree().create_timer(1.0).timeout
+	CS.despawn_all()
 	get_tree().change_scene_to_file("res://stages/menu/menu.tscn")
 
 func on_timer_stunned_timeout() -> void:
