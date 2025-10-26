@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://kyma8fsdlynh"]
+[gd_scene load_steps=30 format=4 uid="uid://kyma8fsdlynh"]
 
 [ext_resource type="PackedScene" uid="uid://die8x6nmdl1fh" path="res://entities/fabio/fabio.tscn" id="1_60rri"]
 [ext_resource type="Script" uid="uid://ceh0v7qbls1r6" path="res://utilities/camera/camera.gd" id="2_5powy"]
@@ -59,13 +59,43 @@ sources/1 = SubResource("TileSetScenesCollectionSource_woy08")
 
 [sub_resource type="Curve2D" id="Curve2D_l7y0w"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -56, 0, 0, 0, 0, 0, 56, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -648, 0, 0, 0, 0, 0, -296, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_17rgw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 416, 0, 0, 0, 0, 0, 528, 0)
 }
 point_count = 2
 
 [sub_resource type="Curve2D" id="Curve2D_drn0y"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -176, 0, 0, 0, 0, 0, 176, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1072, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_efrcj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 1200, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ty5cg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1584, 0, 0, 0, 0, 0, 1920, 0)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_ngigp"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1936, -64, 0, 0, 0, 0, 1984, -64)
+}
+point_count = 2
+
+[sub_resource type="Curve2D" id="Curve2D_2iamo"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2000, -128, 0, 0, 0, 0, 2256, -128)
 }
 point_count = 2
 
@@ -115,6 +145,7 @@ limit_top = -240
 limit_right = 3600
 limit_bottom = 240
 position_smoothing_enabled = true
+position_smoothing_speed = 6.0
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 editor_draw_limits = true
@@ -131,7 +162,7 @@ tile_map_data = PackedByteArray("AAAAAA0AAAACAAAAABABAA0AAAABAAAAAAACAA0AAAABAAA
 tile_set = SubResource("TileSet_woy08")
 
 [node name="Slim" parent="." node_paths=PackedStringArray("path_follow") instance=ExtResource("8_drn0y")]
-position = Vector2(600, 200)
+position = Vector2(360, 200)
 path_follow = NodePath("../Path2D/PathFollow2D")
 
 [node name="Path2D" type="Path2D" parent="."]
@@ -139,19 +170,83 @@ position = Vector2(656, 200)
 curve = SubResource("Curve2D_l7y0w")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(-56, 0)
+position = Vector2(-296, 0)
+progress = 352.0
 loop = false
 
 [node name="Slim2" parent="." node_paths=PackedStringArray("path_follow") instance=ExtResource("8_drn0y")]
-position = Vector2(360, 200)
+position = Vector2(600, 200)
 path_follow = NodePath("../Path2D2/PathFollow2D")
 
 [node name="Path2D2" type="Path2D" parent="."]
 position = Vector2(184, 200)
-curve = SubResource("Curve2D_drn0y")
+curve = SubResource("Curve2D_17rgw")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D2"]
-position = Vector2(176, 0)
+position = Vector2(416, 0)
+loop = false
+
+[node name="Slim3" parent="." node_paths=PackedStringArray("path_follow") instance=ExtResource("8_drn0y")]
+position = Vector2(1256, 200)
+path_follow = NodePath("../Path2D3/PathFollow2D")
+
+[node name="Path2D3" type="Path2D" parent="."]
+position = Vector2(184, 200)
+curve = SubResource("Curve2D_drn0y")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D3"]
+position = Vector2(1072, 0)
+progress = 48.0
+loop = false
+
+[node name="Slim4" parent="." node_paths=PackedStringArray("path_follow") instance=ExtResource("8_drn0y")]
+position = Vector2(1336, 200)
+path_follow = NodePath("../Path2D4/PathFollow2D")
+
+[node name="Path2D4" type="Path2D" parent="."]
+position = Vector2(184, 200)
+curve = SubResource("Curve2D_efrcj")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D4"]
+position = Vector2(1152, 0)
+loop = false
+
+[node name="Slim5" parent="." node_paths=PackedStringArray("path_follow") instance=ExtResource("8_drn0y")]
+position = Vector2(2104, 200)
+path_follow = NodePath("../Path2D5/PathFollow2D")
+
+[node name="Path2D5" type="Path2D" parent="."]
+position = Vector2(184, 200)
+curve = SubResource("Curve2D_ty5cg")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D5"]
+position = Vector2(1920, 0)
+progress = 352.0
+loop = false
+
+[node name="Slim6" parent="." node_paths=PackedStringArray("path_follow") instance=ExtResource("8_drn0y")]
+position = Vector2(2168, 136)
+path_follow = NodePath("../Path2D6/PathFollow2D")
+
+[node name="Path2D6" type="Path2D" parent="."]
+position = Vector2(184, 200)
+curve = SubResource("Curve2D_ngigp")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D6"]
+position = Vector2(1984, -64)
+progress = 352.0
+loop = false
+
+[node name="Slim7" parent="." node_paths=PackedStringArray("path_follow") instance=ExtResource("8_drn0y")]
+position = Vector2(2440, 72)
+path_follow = NodePath("../Path2D7/PathFollow2D")
+
+[node name="Path2D7" type="Path2D" parent="."]
+position = Vector2(184, 200)
+curve = SubResource("Curve2D_2iamo")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D7"]
+position = Vector2(2256, -128)
 progress = 352.0
 loop = false
 
