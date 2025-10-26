@@ -9,6 +9,8 @@ extends Area2D
 		health = h if h >= 0 else 0
 		if health == 0:
 			destroyed.emit()
+## The identifier for this collectable.
+@export var identifier: String = ''
 
 ## To play audio when hit.
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -17,11 +19,14 @@ extends Area2D
 #region SIGNALS
 ## Emitted when destroyed.
 signal destroyed
+## Emitted when destructed/hit.
+signal destructed(amount: int, from: Vector2)
 #endregion
 
 #region FUNCTIONS
 ## Called by a destructor to make this destructable take damage.
-func destruct(amount: int = health, audio_stream: AudioStream = null) -> void:
+func destruct(amount: int = health, from: Vector2 = Vector2.ZERO, audio_stream: AudioStream = null) -> void:
+	destructed.emit(amount, from)
 	health -= amount
 	if audio_stream != null:
 		audio_stream_player_2d.stream = audio_stream
