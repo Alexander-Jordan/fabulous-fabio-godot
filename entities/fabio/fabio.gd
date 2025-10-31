@@ -15,6 +15,7 @@ const RUN_SPEED_MAX: int = 150
 
 #region VARIABLES
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var collector_2d: Collector2D = $Collector2D
 @onready var destructable_2d: Destructable2D = $Destructable2D
 @onready var destructor_2d: Destructor2D = $Destructor2D
 @onready var timer_stunned: Timer = $timer_stunned
@@ -124,10 +125,15 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _ready() -> void:
+	collector_2d.collected.connect(on_collected)
 	destructable_2d.destroyed.connect(on_destroyed)
 	destructable_2d.destructed.connect(on_destructed)
 	timer_stunned.timeout.connect(on_timer_stunned_timeout)
 	visible_on_screen_notifier_2d.screen_exited.connect(on_screen_exited)
+
+func on_collected(collectable: Collectable2D) -> void:
+	if collectable.identifier == 'health':
+		destructable_2d.health += 1
 
 func on_crouch_collision(collision: KinematicCollision2D) -> void:
 	var collider = collision.get_collider()

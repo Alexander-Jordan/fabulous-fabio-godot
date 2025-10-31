@@ -152,7 +152,6 @@ shape = SubResource("RectangleShape2D_3oh2s")
 
 [node name="Destructable2D" type="Area2D" parent="."]
 script = ExtResource("5_gjah6")
-health = 3
 identifier = "fabio"
 metadata/_custom_type_script = "uid://cjixnbjcocece"
 
