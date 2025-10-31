@@ -6,8 +6,11 @@ extends Area2D
 ## Amount of health before being being destroyed.
 @export_range(1, 10) var health: int = 1 :
 	set(h):
-		health = h if h >= 0 else 0
-		if health == 0:
+		if h == health and h < 0:
+			return
+		health = h
+		health_changed.emit(h)
+		if h == 0:
 			destroyed.emit()
 ## The identifier for this collectable.
 @export var identifier: String = ''
@@ -21,13 +24,14 @@ extends Area2D
 signal destroyed
 ## Emitted when destructed/hit.
 signal destructed(amount: int, from: Vector2)
+signal health_changed(health: int)
 #endregion
 
 #region FUNCTIONS
 ## Called by a destructor to make this destructable take damage.
 func destruct(amount: int = health, from: Vector2 = Vector2.ZERO, audio_stream: AudioStream = null) -> void:
-	destructed.emit(amount, from)
 	health -= amount
+	destructed.emit(amount, from)
 	if audio_stream != null:
 		audio_stream_player_2d.stream = audio_stream
 		audio_stream_player_2d.play()

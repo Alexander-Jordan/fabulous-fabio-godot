@@ -132,7 +132,7 @@ func _ready() -> void:
 	visible_on_screen_notifier_2d.screen_exited.connect(on_screen_exited)
 
 func on_collected(collectable: Collectable2D) -> void:
-	if collectable.identifier == 'health':
+	if collectable.identifier == 'health' && destructable_2d.health < 3:
 		destructable_2d.health += 1
 
 func on_crouch_collision(collision: KinematicCollision2D) -> void:
