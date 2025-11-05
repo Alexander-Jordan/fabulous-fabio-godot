@@ -1,4 +1,4 @@
-class_name Coin extends RigidBody2D
+class_name CoinRigidBody extends RigidBody2D
 
 #region VARIABLES
 @onready var collectable_2d: Collectable2D = $Collectable2D
@@ -18,7 +18,8 @@ func on_despawned(_new_position: Vector2) -> void:
 	collectable_2d.disabled = true
 
 func on_spawned(_spawn_point: Vector2) -> void:
-	apply_central_impulse(spawnable_2d.direction)
+	if spawnable_2d.data is Vector2:
+		apply_central_impulse(spawnable_2d.data)
 	await get_tree().create_timer(0.5).timeout
 	collectable_2d.disabled = false
 #endregion
