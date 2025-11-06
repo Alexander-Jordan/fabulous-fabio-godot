@@ -146,8 +146,10 @@ func on_collected(collectable: Collectable2D) -> void:
 			destructable_2d.health += 1
 			SS.stats.health += 1
 		FTS.call_deferred('spawn', global_position, '100')
+		SS.stats.score += 100
 	if collectable.identifier == 'coin':
 		FTS.call_deferred('spawn', global_position, '100')
+		SS.stats.score += 100
 
 func on_crouch_collision(collision: KinematicCollision2D) -> void:
 	var collider = collision.get_collider()
