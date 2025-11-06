@@ -265,11 +265,12 @@ progress = 352.0
 loop = false
 
 [node name="FinishArea" type="Area2D" parent="."]
+position = Vector2(3216, 207.5)
 script = ExtResource("12_l7y0w")
 metadata/_custom_type_script = "uid://dg2lyi453r0wi"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
-position = Vector2(3472, 207.5)
+position = Vector2(256, 0)
 shape = SubResource("RectangleShape2D_drn0y")
 
 [node name="area2d_xray_trigger" type="Area2D" parent="."]
