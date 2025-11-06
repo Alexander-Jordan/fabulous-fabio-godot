@@ -4,6 +4,21 @@
 [ext_resource type="Theme" uid="uid://dke1csv7tv7ku" path="res://config/theme/default_theme.tres" id="1_byni3"]
 [ext_resource type="Script" uid="uid://dx4t6l0hurfew" path="res://common/spawnable/spawnable_2d.gd" id="2_2m0ni"]
 
+[sub_resource type="Animation" id="Animation_beu27"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-11.5]
+}
+
 [sub_resource type="Animation" id="Animation_2m0ni"]
 resource_name = "float_label"
 tracks/0/type = "value"
@@ -31,21 +46,6 @@ tracks/1/keys = {
 "args": [Vector2(0, 0)],
 "method": &"despawn"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_beu27"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Label:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-11.5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oswuo"]

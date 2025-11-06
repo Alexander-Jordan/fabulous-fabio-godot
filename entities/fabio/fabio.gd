@@ -19,7 +19,6 @@ const RUN_SPEED_MAX: int = 150
 @onready var destructable_2d: Destructable2D = $Destructable2D
 @onready var destructor_2d: Destructor2D = $Destructor2D
 @onready var timer_stunned: Timer = $timer_stunned
-@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $VisibleOnScreenNotifier2D
 
 var animation: String = 'idle':
 	set(a):
@@ -49,6 +48,8 @@ var finished: bool = false:
 		finished = f
 		direction = 1.0
 		crouching = false
+		await get_tree().create_timer(3.0).timeout
+		load_menu()
 var jump_time: float = 0.0
 var stunned: bool = false:
 	set(s):
@@ -129,15 +130,21 @@ func _ready() -> void:
 	destructable_2d.destroyed.connect(on_destroyed)
 	destructable_2d.destructed.connect(on_destructed)
 	timer_stunned.timeout.connect(on_timer_stunned_timeout)
-	visible_on_screen_notifier_2d.screen_exited.connect(on_screen_exited)
 	
 	if SS.stats.health < 1:
 		SS.stats.health = destructable_2d.health
 
+func load_menu() -> void:
+	CS.despawn_all()
+	HS.despawn_all()
+	FTS.despawn_all()
+	get_tree().change_scene_to_file("res://stages/menu/menu.tscn")
+
 func on_collected(collectable: Collectable2D) -> void:
-	if collectable.identifier == 'health' && destructable_2d.health < 3:
-		destructable_2d.health += 1
-		SS.stats.health += 1
+	if collectable.identifier == 'health':
+		if destructable_2d.health < 3:
+			destructable_2d.health += 1
+			SS.stats.health += 1
 		FTS.call_deferred('spawn', global_position, '100')
 	if collectable.identifier == 'coin':
 		FTS.call_deferred('spawn', global_position, '100')
@@ -150,6 +157,10 @@ func on_crouch_collision(collision: KinematicCollision2D) -> void:
 
 func on_destroyed() -> void:
 	set_collision_mask_value(1, false)
+	dead = true
+	direction = 0.0
+	await get_tree().create_timer(1.0).timeout
+	load_menu()
 
 func on_destructed(amount: int, from: Vector2) -> void:
 	SS.stats.health -= amount
@@ -157,15 +168,6 @@ func on_destructed(amount: int, from: Vector2) -> void:
 	var from_direction: Vector2 = from.direction_to(global_position)
 	velocity = Vector2(from_direction.x * 200, -200)
 	jump_time = 0.0 # prevent jumping mid-stunned
-
-func on_screen_exited() -> void:
-	dead = true
-	direction = 0.0
-	await get_tree().create_timer(1.0).timeout
-	CS.despawn_all()
-	HS.despawn_all()
-	FTS.despawn_all()
-	get_tree().change_scene_to_file("res://stages/menu/menu.tscn")
 
 func on_timer_stunned_timeout() -> void:
 	stunned = false

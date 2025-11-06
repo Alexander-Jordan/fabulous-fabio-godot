@@ -1,6 +1,7 @@
-[gd_scene load_steps=31 format=4 uid="uid://kyma8fsdlynh"]
+[gd_scene load_steps=33 format=4 uid="uid://kyma8fsdlynh"]
 
 [ext_resource type="PackedScene" uid="uid://die8x6nmdl1fh" path="res://entities/fabio/fabio.tscn" id="1_60rri"]
+[ext_resource type="Script" uid="uid://b3x22yd8gl660" path="res://common/destruct/destructor_2d.gd" id="1_efrcj"]
 [ext_resource type="Script" uid="uid://ceh0v7qbls1r6" path="res://utilities/camera/camera.gd" id="2_5powy"]
 [ext_resource type="TileSet" uid="uid://bdb23t1a542x1" path="res://stages/tileset/tileset_default.tres" id="3_4vbm2"]
 [ext_resource type="Texture2D" uid="uid://dsr7jdyh7mr7q" path="res://stages/tileset/tiles_16x16.png" id="4_j6wwd"]
@@ -23,6 +24,8 @@ normal = Vector2(1, 0)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_5powy"]
 normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_efrcj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_usqqw"]
 texture = ExtResource("4_j6wwd")
@@ -127,6 +130,16 @@ shape = SubResource("WorldBoundaryShape2D_60rri")
 [node name="collisionshape2d_right" type="CollisionShape2D" parent="boundaries/StaticBody2D"]
 position = Vector2(3728, 0)
 shape = SubResource("WorldBoundaryShape2D_5powy")
+
+[node name="Destructor2D" type="Area2D" parent="boundaries"]
+script = ExtResource("1_efrcj")
+destruct_amount = 3
+destructable_identifiers = Array[String](["fabio"])
+metadata/_custom_type_script = "uid://b3x22yd8gl660"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boundaries/Destructor2D"]
+position = Vector2(1176, 240)
+shape = SubResource("WorldBoundaryShape2D_efrcj")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

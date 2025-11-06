@@ -7,11 +7,11 @@ class_name StatsData extends Resource
 ## The health of the player.
 @export var health: int = 1:
 	set(h):
-		if h < 0 or h == health:
+		if h == health:
 			return
 		
-		health = h
-		health_changed.emit(h)
+		health = h if h > 0 else 0
+		health_changed.emit(health)
 ## The total collected score.
 @export var score: int = 0:
 	set(s):

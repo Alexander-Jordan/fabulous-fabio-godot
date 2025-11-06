@@ -171,5 +171,3 @@ shape = SubResource("RectangleShape2D_gjah6")
 
 [node name="timer_stunned" type="Timer" parent="."]
 one_shot = true
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

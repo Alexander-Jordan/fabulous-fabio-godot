@@ -6,11 +6,11 @@ extends Area2D
 ## Amount of health before being being destroyed.
 @export_range(1, 10) var health: int = 1 :
 	set(h):
-		if h == health and h < 0:
+		if h == health:
 			return
-		health = h
-		health_changed.emit(h)
-		if h == 0:
+		health = h if h > 0 else 0
+		health_changed.emit(health)
+		if health == 0:
 			destroyed.emit()
 ## The identifier for this collectable.
 @export var identifier: String = ''
