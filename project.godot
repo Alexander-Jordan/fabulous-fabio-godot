@@ -18,6 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 CS="*res://entities/coin/coin_spawner.gd"
+HS="*res://entities/health/health_spawner.gd"
+SS="*res://utilities/save_system/save_system.gd"
+FTS="*res://utilities/floating_text_spawner/floating_text_spawner.gd"
 
 [display]
 

@@ -141,7 +141,7 @@ shape = SubResource("RectangleShape2D_ks7st")
 
 [node name="Collector2D" type="Area2D" parent="."]
 script = ExtResource("3_l32ub")
-collectable_identifiers = Array[String](["coin"])
+collectable_identifiers = Array[String](["coin", "health"])
 metadata/_custom_type_script = "uid://crxmoyjq1vwwu"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collector2D"]
@@ -152,7 +152,6 @@ shape = SubResource("RectangleShape2D_3oh2s")
 
 [node name="Destructable2D" type="Area2D" parent="."]
 script = ExtResource("5_gjah6")
-health = 3
 identifier = "fabio"
 metadata/_custom_type_script = "uid://cjixnbjcocece"
 
@@ -172,5 +171,3 @@ shape = SubResource("RectangleShape2D_gjah6")
 
 [node name="timer_stunned" type="Timer" parent="."]
 one_shot = true
-
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
