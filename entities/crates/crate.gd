@@ -1,6 +1,9 @@
 class_name Crate extends StaticBody2D
 
 #region FUNCTIONS
+@export var audio_bump: AudioStream
+@export var audio_crash: AudioStream
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_2d: Area2D = $Area2D
 @onready var items_count: int = randi_range(1, 3)
@@ -14,6 +17,7 @@ var disabled: bool = false:
 		disabled = d
 		process_mode = ProcessMode.PROCESS_MODE_DISABLED if d else ProcessMode.PROCESS_MODE_INHERIT
 		visible = !d
+		AS.spawn(global_position, audio_crash)
 #endregion
 
 #region FUNCTIONS
@@ -27,6 +31,7 @@ func animate_crate_bump() -> void:
 
 func on_area_2d_body_entered(body: Node2D) -> void:
 	if body is Fabio:
+		AS.spawn(global_position, audio_bump)
 		animate_crate_bump()
 		spawn_item(Vector2(global_position.x, global_position.y - 10))
 
