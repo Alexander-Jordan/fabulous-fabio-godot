@@ -13,7 +13,10 @@ config_version=5
 config/name="Fabulous Fabio"
 run/main_scene="uid://c0v3nvjalfydh"
 config/features=PackedStringArray("4.4", "GL Compatibility")
-config/icon="res://icon.svg"
+boot_splash/bg_color=Color(0.67451, 0.196078, 0.196078, 1)
+boot_splash/image="uid://jt0wkwaa23pg"
+config/icon="uid://jt0wkwaa23pg"
+boot_splash/minimum_display_time=3000
 
 [autoload]
 
