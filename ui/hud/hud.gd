@@ -9,7 +9,7 @@ class_name Hud extends Control
 @onready var texturerect_health_3: TextureRect = $MarginContainer/VBoxContainer/HBoxContainer/texturerect_health3
 @onready var timer: Timer = $Timer
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if fabio == null or fabio.dead or timer.is_stopped():
 		return
 	

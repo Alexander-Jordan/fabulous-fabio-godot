@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7n4daahuol3p"]
+
+[ext_resource type="Script" uid="uid://bvalih7kjhecl" path="res://utilities/audio_spawner/audio_spawnable.gd" id="1_cb5gu"]
+[ext_resource type="Script" uid="uid://dx4t6l0hurfew" path="res://common/spawnable/spawnable_2d.gd" id="2_qpua2"]
+
+[node name="AudioSpawnable" type="AudioStreamPlayer2D"]
+bus = &"sfx"
+script = ExtResource("1_cb5gu")
+metadata/_custom_type_script = "uid://bvalih7kjhecl"
+
+[node name="Spawnable2D" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
+script = ExtResource("2_qpua2")
+root_node = NodePath("..")
+metadata/_custom_type_script = "uid://dx4t6l0hurfew"

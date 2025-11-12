@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://cpcv0pykwenmm"]
+[gd_scene load_steps=8 format=3 uid="uid://cpcv0pykwenmm"]
 
 [ext_resource type="Script" uid="uid://crx2nl2kyfb41" path="res://entities/coin/coin_rigidbody.gd" id="1_wixg8"]
 [ext_resource type="SpriteFrames" uid="uid://0xud2jhysca8" path="res://entities/coin/coin_animation.tres" id="2_wixg8"]
 [ext_resource type="Script" uid="uid://cinn5yixd7nw6" path="res://common/collect/collectable_2d.gd" id="3_pi0ti"]
+[ext_resource type="AudioStream" uid="uid://cns1topdnloqy" path="res://entities/coin/pickupCoin.wav" id="4_lu57q"]
 [ext_resource type="Script" uid="uid://dx4t6l0hurfew" path="res://common/spawnable/spawnable_2d.gd" id="4_vtdu7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sogop"]
@@ -25,6 +26,7 @@ frame_progress = 0.265464
 
 [node name="Collectable2D" type="Area2D" parent="."]
 script = ExtResource("3_pi0ti")
+audio_streams = Array[AudioStream]([ExtResource("4_lu57q")])
 disabled = true
 identifier = "coin"
 metadata/_custom_type_script = "uid://cinn5yixd7nw6"

@@ -14,7 +14,10 @@ const RUN_SPEED_MAX: int = 150
 #endregion
 
 #region VARIABLES
+@export var audio_jump: AudioStream
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var collector_2d: Collector2D = $Collector2D
 @onready var destructable_2d: Destructable2D = $Destructable2D
 @onready var destructor_2d: Destructor2D = $Destructor2D
@@ -82,6 +85,8 @@ func _process(delta: float) -> void:
 	
 	# initial jump force, applied only when grounded:
 	if is_on_floor() and Input.is_action_just_pressed('jump'):
+		audio_stream_player_2d.stream = audio_jump
+		audio_stream_player_2d.play()
 		velocity.y -= JUMP_FORCE * delta
 		jump_time = JUMP_TIME
 	# jump force applied every frame as long as the jump button is held down:

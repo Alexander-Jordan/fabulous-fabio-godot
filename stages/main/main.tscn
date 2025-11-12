@@ -1,9 +1,11 @@
-[gd_scene load_steps=33 format=4 uid="uid://kyma8fsdlynh"]
+[gd_scene load_steps=37 format=4 uid="uid://kyma8fsdlynh"]
 
 [ext_resource type="PackedScene" uid="uid://die8x6nmdl1fh" path="res://entities/fabio/fabio.tscn" id="1_60rri"]
 [ext_resource type="Script" uid="uid://b3x22yd8gl660" path="res://common/destruct/destructor_2d.gd" id="1_efrcj"]
+[ext_resource type="AudioStream" uid="uid://bt06g7guv64v7" path="res://assets/music/8-bit-arcade-138828.mp3" id="1_ty5cg"]
 [ext_resource type="Script" uid="uid://ceh0v7qbls1r6" path="res://utilities/camera/camera.gd" id="2_5powy"]
 [ext_resource type="TileSet" uid="uid://bdb23t1a542x1" path="res://stages/tileset/tileset_default.tres" id="3_4vbm2"]
+[ext_resource type="AudioStream" uid="uid://cwdpo64k38v10" path="res://entities/fabio/hitHurt.wav" id="3_ngigp"]
 [ext_resource type="Texture2D" uid="uid://dsr7jdyh7mr7q" path="res://stages/tileset/tiles_16x16.png" id="4_j6wwd"]
 [ext_resource type="PackedScene" uid="uid://cuwenquvpjyhs" path="res://entities/crates/crate.tscn" id="4_woy08"]
 [ext_resource type="PackedScene" uid="uid://ctmndhr67th1i" path="res://entities/coin/coin_floating.tscn" id="6_17rgw"]
@@ -14,7 +16,9 @@
 [ext_resource type="PackedScene" uid="uid://bs1fd3gpxcxmh" path="res://entities/enemies/slim/slim.tscn" id="8_drn0y"]
 [ext_resource type="TileSet" uid="uid://b0dyx5boedhnq" path="res://stages/tileset/tileset_xray.tres" id="9_axbkc"]
 [ext_resource type="Script" uid="uid://dg2lyi453r0wi" path="res://utilities/finish_area/finish_area.gd" id="12_l7y0w"]
+[ext_resource type="AudioStream" uid="uid://bo2e1pr3dox8l" path="res://utilities/finish_area/marimba-win-f-2-209688.mp3" id="13_2iamo"]
 [ext_resource type="PackedScene" uid="uid://c5rx8w61lck81" path="res://ui/hud/hud.tscn" id="14_17rgw"]
+[ext_resource type="AudioStream" uid="uid://cns1topdnloqy" path="res://entities/coin/pickupCoin.wav" id="14_ie2l8"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_802tp"]
 normal = Vector2(0, 1)
@@ -133,6 +137,7 @@ shape = SubResource("WorldBoundaryShape2D_5powy")
 
 [node name="Destructor2D" type="Area2D" parent="boundaries"]
 script = ExtResource("1_efrcj")
+audio_streams = Array[AudioStream]([ExtResource("3_ngigp")])
 destruct_amount = 3
 destructable_identifiers = Array[String](["fabio"])
 metadata/_custom_type_script = "uid://b3x22yd8gl660"
@@ -267,7 +272,14 @@ loop = false
 [node name="FinishArea" type="Area2D" parent="."]
 position = Vector2(3216, 207.5)
 script = ExtResource("12_l7y0w")
+audio_finished = ExtResource("13_2iamo")
+audio_music = ExtResource("1_ty5cg")
+audio_points = ExtResource("14_ie2l8")
 metadata/_custom_type_script = "uid://dg2lyi453r0wi"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="FinishArea"]
+volume_db = -12.0
+bus = &"music"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FinishArea"]
 position = Vector2(256, 0)
