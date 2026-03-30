@@ -70,7 +70,7 @@ var stunned: bool = false:
 #endregion
 
 #region FUNCTIONS
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if finished or dead:
 		return
 	
@@ -82,20 +82,6 @@ func _process(delta: float) -> void:
 		crouching = false
 	
 	direction = Input.get_axis('left', 'right')
-	
-	# initial jump force, applied only when grounded:
-	if is_on_floor() and Input.is_action_just_pressed('jump'):
-		audio_stream_player_2d.stream = audio_jump
-		audio_stream_player_2d.play()
-		velocity.y -= JUMP_FORCE * delta
-		jump_time = JUMP_TIME
-	# jump force applied every frame as long as the jump button is held down:
-	if Input.is_action_pressed('jump') and jump_time > 0:
-		velocity.y -= JUMP_FORCE * delta
-		jump_time -= delta
-	# kill jump time when the jump button is released:
-	if Input.is_action_just_released('jump'):
-		jump_time = 0.0
 
 func _physics_process(delta: float) -> void:
 	if direction != 0.0 and !crouching:
@@ -123,10 +109,24 @@ func _physics_process(delta: float) -> void:
 				animation = 'run'
 		else:
 			animation = 'idle'
+		# initial jump force, applied only when grounded:
+		if Input.is_action_just_pressed('jump'):
+			audio_stream_player_2d.stream = audio_jump
+			audio_stream_player_2d.play()
+			velocity.y -= JUMP_FORCE * delta
+			jump_time = JUMP_TIME
 	else:
 		animation = 'jump' if !stunned else 'die'
 		if velocity.y < FALL_SPEED_MAX:
 			velocity.y += get_gravity().y * delta
+	
+	# jump force applied every frame as long as the jump button is held down:
+	if Input.is_action_pressed('jump') and jump_time > 0:
+		velocity.y -= JUMP_FORCE * delta
+		jump_time -= delta
+	# kill jump time when the jump button is released:
+	if Input.is_action_just_released('jump'):
+		jump_time = 0.0
 	
 	move_and_slide()
 
