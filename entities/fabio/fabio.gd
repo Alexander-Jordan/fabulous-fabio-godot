@@ -86,6 +86,7 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed('gravity'):
 		gravity_vector = -gravity_vector
 		PhysicsServer2D.area_set_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, gravity_vector)
+		up_direction = -up_direction
 	
 	direction = Input.get_axis('left', 'right')
 
@@ -130,7 +131,7 @@ func _physics_process(delta: float) -> void:
 	
 	# jump force applied every frame as long as the jump button is held down:
 	if Input.is_action_pressed('jump') and jump_time > 0:
-		velocity.y -= JUMP_FORCE * delta
+		velocity.y += (up_direction.y * JUMP_FORCE) * delta
 		jump_time -= delta
 	# kill jump time when the jump button is released:
 	if Input.is_action_just_released('jump'):
