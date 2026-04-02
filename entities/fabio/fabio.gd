@@ -21,6 +21,8 @@ const RUN_SPEED_MAX: int = 150
 @onready var collector_2d: Collector2D = $Collector2D
 @onready var destructable_2d: Destructable2D = $Destructable2D
 @onready var destructor_2d: Destructor2D = $Destructor2D
+@onready var world_space_rid: RID = get_viewport().find_world_2d().space
+@onready var gravity_vector: Vector2 = PhysicsServer2D.area_get_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR)
 @onready var timer_stunned: Timer = $timer_stunned
 
 var animation: String = 'idle':
@@ -82,9 +84,8 @@ func _process(_delta: float) -> void:
 		crouching = false
 	
 	if Input.is_action_just_pressed('gravity'):
-		var world_space_rid: RID = get_viewport().find_world_2d().space
-		var gravity_vector: Vector2 = PhysicsServer2D.area_get_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR)
-		PhysicsServer2D.area_set_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, -gravity_vector)
+		gravity_vector = -gravity_vector
+		PhysicsServer2D.area_set_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, gravity_vector)
 	
 	direction = Input.get_axis('left', 'right')
 
