@@ -123,6 +123,7 @@ shader_parameter/scale_value = 0.0
 [node name="boundaries" type="Node" parent="."]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="boundaries"]
+collision_layer = 3
 
 [node name="collisionshape2d_top" type="CollisionShape2D" parent="boundaries/StaticBody2D"]
 position = Vector2(0, -240)
