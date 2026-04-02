@@ -20,7 +20,8 @@ const RUN_SPEED_MAX: int = 150
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var collector_2d: Collector2D = $Collector2D
 @onready var destructable_2d: Destructable2D = $Destructable2D
-@onready var destructor_2d: Destructor2D = $Destructor2D
+@onready var destructor_2d_bottom: Destructor2D = $destructor2d_bottom
+@onready var destructor_2d_top: Destructor2D = $destructor2d_top
 @onready var world_space_rid: RID = get_viewport().find_world_2d().space
 @onready var gravity_vector: Vector2 = PhysicsServer2D.area_get_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR)
 @onready var timer_stunned: Timer = $timer_stunned
@@ -67,7 +68,8 @@ var stunned: bool = false:
 			crouching = false
 			direction = 0.0
 			destructable_2d.process_mode = PROCESS_MODE_DISABLED
-			destructor_2d.process_mode = PROCESS_MODE_DISABLED
+			destructor_2d_bottom.process_mode = PROCESS_MODE_DISABLED
+			destructor_2d_top.process_mode = PROCESS_MODE_DISABLED
 			timer_stunned.start()
 #endregion
 
@@ -76,17 +78,24 @@ func _process(_delta: float) -> void:
 	if finished or dead:
 		return
 	
+	if Input.is_action_just_pressed('gravity'):
+		gravity_vector = -gravity_vector
+		PhysicsServer2D.area_set_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, gravity_vector)
+		up_direction = -up_direction
+		animated_sprite_2d.flip_v = !animated_sprite_2d.flip_v
+		if up_direction.y > 0:
+			destructor_2d_top.process_mode = PROCESS_MODE_INHERIT
+			destructor_2d_bottom.process_mode = PROCESS_MODE_DISABLED
+		else:
+			destructor_2d_top.process_mode = PROCESS_MODE_DISABLED
+			destructor_2d_bottom.process_mode = PROCESS_MODE_INHERIT
+	
 	if Input.is_action_pressed('down'):
 		crouching = true
 		return
 	
 	if Input.is_action_just_released('down') and is_on_floor():
 		crouching = false
-	
-	if Input.is_action_just_pressed('gravity'):
-		gravity_vector = -gravity_vector
-		PhysicsServer2D.area_set_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, gravity_vector)
-		up_direction = -up_direction
 	
 	direction = Input.get_axis('left', 'right')
 
@@ -187,6 +196,7 @@ func on_destructed(amount: int, from: Vector2) -> void:
 
 func on_timer_stunned_timeout() -> void:
 	stunned = false
-	destructor_2d.process_mode = PROCESS_MODE_INHERIT
+	destructor_2d_bottom.process_mode = PROCESS_MODE_INHERIT
+	destructor_2d_top.process_mode = PROCESS_MODE_INHERIT
 	destructable_2d.process_mode = PROCESS_MODE_INHERIT
 #endregion
