@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cuwenquvpjyhs"]
+[gd_scene load_steps=9 format=3 uid="uid://cuwenquvpjyhs"]
 
 [ext_resource type="Texture2D" uid="uid://dsr7jdyh7mr7q" path="res://stages/tileset/tiles_16x16.png" id="1_5v8se"]
 [ext_resource type="Script" uid="uid://dqs3jnb47pdbu" path="res://entities/crates/crate.gd" id="1_eird3"]
@@ -26,7 +26,7 @@ size = Vector2(12, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv1f4"]
 size = Vector2(16, 16)
 
-[node name="Crate" type="StaticBody2D" unique_id=599906770]
+[node name="Crate" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 0
 script = ExtResource("1_eird3")
@@ -34,15 +34,15 @@ audio_bump = ExtResource("2_crcjd")
 audio_crash = ExtResource("2_eird3")
 metadata/_custom_type_script = "uid://dqs3jnb47pdbu"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=922118579]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_eird3")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=560887199]
+[node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1530708809]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 8)
 shape = SubResource("RectangleShape2D_gbs07")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1298533637]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dv1f4")

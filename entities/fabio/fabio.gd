@@ -81,6 +81,11 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_released('down') and is_on_floor():
 		crouching = false
 	
+	if Input.is_action_just_pressed('gravity'):
+		var world_space_rid: RID = get_viewport().find_world_2d().space
+		var gravity_vector: Vector2 = PhysicsServer2D.area_get_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR)
+		PhysicsServer2D.area_set_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, -gravity_vector)
+	
 	direction = Input.get_axis('left', 'right')
 
 func _physics_process(delta: float) -> void:
@@ -117,8 +122,10 @@ func _physics_process(delta: float) -> void:
 			jump_time = JUMP_TIME
 	else:
 		animation = 'jump' if !stunned else 'die'
-		if velocity.y < FALL_SPEED_MAX:
-			velocity.y += get_gravity().y * delta
+	
+	# always apply gravity force (for now at least)
+	if velocity.y < FALL_SPEED_MAX:
+		velocity.y += get_gravity().y * delta
 	
 	# jump force applied every frame as long as the jump button is held down:
 	if Input.is_action_pressed('jump') and jump_time > 0:

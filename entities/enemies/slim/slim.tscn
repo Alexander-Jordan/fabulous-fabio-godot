@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bs1fd3gpxcxmh"]
+[gd_scene load_steps=16 format=3 uid="uid://bs1fd3gpxcxmh"]
 
 [ext_resource type="Texture2D" uid="uid://d1tol04u00t2x" path="res://entities/enemies/slim/slim.png" id="1_4kevg"]
 [ext_resource type="Script" uid="uid://cq2y3nmbphm3j" path="res://entities/enemies/slim/slim.gd" id="1_smcj1"]
@@ -70,40 +70,40 @@ size = Vector2(14, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djbgf"]
 size = Vector2(14, 9)
 
-[node name="Slim" type="CharacterBody2D" unique_id=779644261]
+[node name="Slim" type="CharacterBody2D"]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_smcj1")
 metadata/_custom_type_script = "uid://cq2y3nmbphm3j"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2101755088]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_is4ku")
 animation = &"walk"
 autoplay = "walk"
 frame_progress = 0.471871
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1436996419]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_8c81q")
 
-[node name="Destructable2D" type="Area2D" parent="." unique_id=893936553]
+[node name="Destructable2D" type="Area2D" parent="."]
 script = ExtResource("3_rsih1")
 identifier = "enemy_jumpable"
 metadata/_custom_type_script = "uid://cjixnbjcocece"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Destructable2D" unique_id=1228937692]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Destructable2D"]
 bus = &"sfx"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D" unique_id=22690058]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D"]
 position = Vector2(0, -2.5)
 shape = SubResource("RectangleShape2D_7vpg4")
 
-[node name="Destructor2D" type="Area2D" parent="." unique_id=1264024652]
+[node name="Destructor2D" type="Area2D" parent="."]
 script = ExtResource("4_7vpg4")
 audio_streams = Array[AudioStream]([ExtResource("5_djbgf")])
 destructable_identifiers = Array[String](["fabio"])
 metadata/_custom_type_script = "uid://b3x22yd8gl660"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructor2D" unique_id=1039969855]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructor2D"]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_djbgf")

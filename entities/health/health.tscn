@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://bysn3615iyj2r"]
+[gd_scene load_steps=15 format=3 uid="uid://bysn3615iyj2r"]
 
 [ext_resource type="Script" uid="uid://cgbjwlt4p0355" path="res://entities/health/health.gd" id="1_x6cqt"]
 [ext_resource type="Texture2D" uid="uid://c1a4jh22v6npq" path="res://entities/health/heart_spritesheet.png" id="2_ix0t8"]
@@ -62,30 +62,31 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix0t8"]
 radius = 7.0
 
-[node name="Health" type="RigidBody2D" unique_id=465879434]
+[node name="Health" type="RigidBody2D"]
 collision_layer = 0
 collision_mask = 2
+can_sleep = false
 lock_rotation = true
 script = ExtResource("1_x6cqt")
 metadata/_custom_type_script = "uid://cgbjwlt4p0355"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=986520625]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lgupw")
 autoplay = "default"
 
-[node name="Collectable2D" type="Area2D" parent="." unique_id=381657584]
+[node name="Collectable2D" type="Area2D" parent="."]
 script = ExtResource("3_h47vd")
 audio_streams = Array[AudioStream]([ExtResource("4_5q466")])
 identifier = "health"
 metadata/_custom_type_script = "uid://cinn5yixd7nw6"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=917745662]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D"]
 shape = SubResource("CircleShape2D_5q466")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2125069271]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ix0t8")
 
-[node name="Spawnable2D" type="Node2D" parent="." unique_id=388403000 node_paths=PackedStringArray("root_node")]
+[node name="Spawnable2D" type="Node2D" parent="." node_paths=PackedStringArray("root_node")]
 script = ExtResource("4_18thd")
 root_node = NodePath("..")
 metadata/_custom_type_script = "uid://dx4t6l0hurfew"
