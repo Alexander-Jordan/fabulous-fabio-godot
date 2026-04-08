@@ -26,8 +26,7 @@ func _ready() -> void:
 
 func animate_crate_bump() -> void:
 	var tween = create_tween()
-	var final_val: float = 5 if GM.gravity_vector.y < 0 else -5
-	tween.tween_property(animated_sprite_2d, 'position:y', final_val, 0.02)
+	tween.tween_property(animated_sprite_2d, 'position:y', 5 * -GM.gravity_vector.y, 0.02)
 	tween.tween_property(animated_sprite_2d, 'position:y', 0, 0.1)
 
 func on_area_2d_body_entered(body: Node2D) -> void:

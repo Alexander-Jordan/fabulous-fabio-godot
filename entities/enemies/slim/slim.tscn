@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cjixnbjcocece" path="res://common/destruct/destructible_2d.gd" id="3_rsih1"]
 [ext_resource type="Script" uid="uid://b3x22yd8gl660" path="res://common/destruct/destructor_2d.gd" id="4_7vpg4"]
 [ext_resource type="AudioStream" uid="uid://cwdpo64k38v10" path="res://entities/fabio/hitHurt.wav" id="5_djbgf"]
+[ext_resource type="Script" uid="uid://b646d8wba2ck3" path="res://utilities/change_direction_trigger/direction_handler.gd" id="6_8c81q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rsih1"]
 atlas = ExtResource("1_4kevg")
@@ -70,9 +71,10 @@ size = Vector2(14, 3)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djbgf"]
 size = Vector2(14, 9)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7tpcx"]
+size = Vector2(16, 9)
+
 [node name="Slim" type="CharacterBody2D" unique_id=2030608081]
-collision_layer = 0
-collision_mask = 0
 script = ExtResource("1_smcj1")
 metadata/_custom_type_script = "uid://cq2y3nmbphm3j"
 
@@ -80,7 +82,6 @@ metadata/_custom_type_script = "uid://cq2y3nmbphm3j"
 sprite_frames = SubResource("SpriteFrames_is4ku")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.471871
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=671693416]
 position = Vector2(0, 3)
@@ -107,3 +108,11 @@ metadata/_custom_type_script = "uid://b3x22yd8gl660"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destructor2D" unique_id=1381914846]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_djbgf")
+
+[node name="DirectionHandler" type="Area2D" parent="." unique_id=482889526]
+script = ExtResource("6_8c81q")
+metadata/_custom_type_script = "uid://b646d8wba2ck3"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionHandler" unique_id=1345449339]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_7tpcx")
