@@ -29,6 +29,7 @@ HS="*res://entities/health/health_spawner.gd"
 SS="*res://utilities/save_system/save_system.gd"
 FTS="*res://utilities/floating_text_spawner/floating_text_spawner.gd"
 AS="*res://utilities/audio_spawner/audio_spawner.gd"
+GM="*uid://b8dyp2poy1nia"
 
 [display]
 

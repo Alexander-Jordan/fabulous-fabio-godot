@@ -22,8 +22,6 @@ const RUN_SPEED_MAX: int = 150
 @onready var destructable_2d: Destructable2D = $Destructable2D
 @onready var destructor_2d_bottom: Destructor2D = $destructor2d_bottom
 @onready var destructor_2d_top: Destructor2D = $destructor2d_top
-@onready var world_space_rid: RID = get_viewport().find_world_2d().space
-@onready var gravity_vector: Vector2 = PhysicsServer2D.area_get_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR)
 @onready var timer_stunned: Timer = $timer_stunned
 
 var animation: String = 'idle':
@@ -77,18 +75,6 @@ var stunned: bool = false:
 func _process(_delta: float) -> void:
 	if finished or dead:
 		return
-	
-	if Input.is_action_just_pressed('gravity'):
-		gravity_vector = -gravity_vector
-		PhysicsServer2D.area_set_param(world_space_rid, PhysicsServer2D.AREA_PARAM_GRAVITY_VECTOR, gravity_vector)
-		up_direction = -up_direction
-		animated_sprite_2d.flip_v = !animated_sprite_2d.flip_v
-		if up_direction.y > 0:
-			destructor_2d_top.process_mode = PROCESS_MODE_INHERIT
-			destructor_2d_bottom.process_mode = PROCESS_MODE_DISABLED
-		else:
-			destructor_2d_top.process_mode = PROCESS_MODE_DISABLED
-			destructor_2d_bottom.process_mode = PROCESS_MODE_INHERIT
 	
 	if Input.is_action_pressed('down'):
 		crouching = true
@@ -152,10 +138,15 @@ func _ready() -> void:
 	collector_2d.collected.connect(on_collected)
 	destructable_2d.destroyed.connect(on_destroyed)
 	destructable_2d.destructed.connect(on_destructed)
+	GM.gravity_vector_changed.connect(on_gravity_vector_changed)
 	timer_stunned.timeout.connect(on_timer_stunned_timeout)
 	
 	if SS.stats.health < 1:
 		SS.stats.health = destructable_2d.health
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed('gravity'):
+		GM.gravity_vector = -GM.gravity_vector
 
 func load_menu() -> void:
 	CS.despawn_all()
@@ -193,6 +184,16 @@ func on_destructed(amount: int, from: Vector2) -> void:
 	var from_direction: Vector2 = from.direction_to(global_position)
 	velocity = Vector2(from_direction.x * 200, -200)
 	jump_time = 0.0 # prevent jumping mid-stunned
+
+func on_gravity_vector_changed(gravity_vector: Vector2) -> void:
+	up_direction = -gravity_vector
+	animated_sprite_2d.flip_v = !animated_sprite_2d.flip_v
+	if up_direction.y > 0:
+		destructor_2d_top.process_mode = PROCESS_MODE_INHERIT
+		destructor_2d_bottom.process_mode = PROCESS_MODE_DISABLED
+	else:
+		destructor_2d_top.process_mode = PROCESS_MODE_DISABLED
+		destructor_2d_bottom.process_mode = PROCESS_MODE_INHERIT
 
 func on_timer_stunned_timeout() -> void:
 	stunned = false
