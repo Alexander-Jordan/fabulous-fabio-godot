@@ -63,16 +63,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8c81q"]
-size = Vector2(12, 8)
+size = Vector2(12, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vpg4"]
 size = Vector2(14, 3)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv4cu"]
+size = Vector2(14, 3)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_djbgf"]
-size = Vector2(14, 9)
+size = Vector2(14, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tpcx"]
-size = Vector2(16, 9)
+size = Vector2(16, 8)
 
 [node name="Slim" type="CharacterBody2D" unique_id=2030608081]
 script = ExtResource("1_smcj1")
@@ -84,7 +87,6 @@ animation = &"walk"
 autoplay = "walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=671693416]
-position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_8c81q")
 
 [node name="Destructable2D" type="Area2D" parent="." unique_id=1411782480]
@@ -93,11 +95,16 @@ identifier = "enemy_jumpable"
 metadata/_custom_type_script = "uid://cjixnbjcocece"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Destructable2D" unique_id=1949664351]
+process_mode = 1
 bus = &"sfx"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D" unique_id=971863720]
-position = Vector2(0, -2.5)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_7vpg4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Destructable2D" unique_id=1515821009]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_jv4cu")
 
 [node name="Destructor2D" type="Area2D" parent="." unique_id=604126811]
 script = ExtResource("4_7vpg4")
@@ -106,7 +113,6 @@ destructable_identifiers = Array[String](["fabio"])
 metadata/_custom_type_script = "uid://b3x22yd8gl660"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Destructor2D" unique_id=1381914846]
-position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_djbgf")
 
 [node name="DirectionHandler" type="Area2D" parent="." unique_id=482889526]
@@ -114,5 +120,7 @@ script = ExtResource("6_8c81q")
 metadata/_custom_type_script = "uid://b646d8wba2ck3"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DirectionHandler" unique_id=1345449339]
-position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_7tpcx")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1237612699]
+rect = Rect2(-100, -100, 200, 200)

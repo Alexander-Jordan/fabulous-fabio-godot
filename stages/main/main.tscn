@@ -78,19 +78,19 @@ shader_parameter/alpha_value = 0.0
 shader_parameter/scale_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0eiup"]
-size = Vector2(16, 16)
+size = Vector2(16, 448)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0phs"]
-size = Vector2(16, 16)
+size = Vector2(16, 448)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8v7n"]
-size = Vector2(16, 16)
+size = Vector2(16, 448)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlblm"]
-size = Vector2(16, 16)
+size = Vector2(16, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crusu"]
-size = Vector2(16, 16)
+size = Vector2(16, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ux6lt"]
 size = Vector2(16, 448)
@@ -114,22 +114,22 @@ size = Vector2(16, 448)
 size = Vector2(16, 448)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvgmq"]
-size = Vector2(16, 16)
+size = Vector2(16, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pgsob"]
-size = Vector2(16, 16)
+size = Vector2(16, 384)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7kwa6"]
-size = Vector2(16, 16)
+size = Vector2(16, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5l3g"]
-size = Vector2(16, 16)
+size = Vector2(16, 320)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48mxg"]
 size = Vector2(16, 320)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jysyc"]
-size = Vector2(16, 16)
+size = Vector2(16, 120)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i80q7"]
 size = Vector2(16, 448)
@@ -204,25 +204,25 @@ tile_map_data = PackedByteArray("AAAAAA0AAAACAAAAABABAA0AAAABAAAAAAACAA0AAAABAAA
 tile_set = SubResource("TileSet_woy08")
 
 [node name="Slim" parent="." unique_id=1767951052 instance=ExtResource("8_drn0y")]
-position = Vector2(360, 200)
+position = Vector2(344, 200)
 
 [node name="Slim2" parent="." unique_id=2139561321 instance=ExtResource("8_drn0y")]
-position = Vector2(712, 200)
+position = Vector2(696, 200)
 
 [node name="Slim3" parent="." unique_id=723836900 instance=ExtResource("8_drn0y")]
-position = Vector2(1256, 200)
+position = Vector2(1248, 200)
 
 [node name="Slim4" parent="." unique_id=580033819 instance=ExtResource("8_drn0y")]
-position = Vector2(1384, 200)
+position = Vector2(1376, 200)
 
 [node name="Slim5" parent="." unique_id=1312411704 instance=ExtResource("8_drn0y")]
-position = Vector2(2104, 200)
+position = Vector2(1848, 200)
 
 [node name="Slim6" parent="." unique_id=1577504293 instance=ExtResource("8_drn0y")]
-position = Vector2(2168, 136)
+position = Vector2(2160, 136)
 
 [node name="Slim7" parent="." unique_id=758587341 instance=ExtResource("8_drn0y")]
-position = Vector2(2440, 72)
+position = Vector2(2304, 72)
 
 [node name="FinishArea" type="Area2D" parent="." unique_id=493867309]
 position = Vector2(3216, 207.5)
@@ -280,22 +280,23 @@ script = ExtResource("20_i8v7n")
 metadata/_custom_type_script = "uid://bn26pevojn8qh"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=1088544116]
-position = Vector2(-384, 0)
+position = Vector2(-384, -216)
 shape = SubResource("RectangleShape2D_0eiup")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=994841600]
+position = Vector2(0, -216)
 shape = SubResource("RectangleShape2D_x0phs")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=980032224]
-position = Vector2(208, 0)
+position = Vector2(208, -216)
 shape = SubResource("RectangleShape2D_i8v7n")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=2133139886]
-position = Vector2(352, 0)
+position = Vector2(352, -20)
 shape = SubResource("RectangleShape2D_mlblm")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=1691449794]
-position = Vector2(544, 0)
+position = Vector2(544, -20)
 shape = SubResource("RectangleShape2D_crusu")
 
 [node name="CollisionShape2D6" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=414194519]
@@ -327,19 +328,19 @@ position = Vector2(1376, -216)
 shape = SubResource("RectangleShape2D_gw17s")
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=431621050]
-position = Vector2(1744, 0)
+position = Vector2(1744, -20)
 shape = SubResource("RectangleShape2D_gvgmq")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=1217553189]
-position = Vector2(1728, -64)
+position = Vector2(1728, -248)
 shape = SubResource("RectangleShape2D_pgsob")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=1839046973]
-position = Vector2(1808, -64)
+position = Vector2(1808, -84)
 shape = SubResource("RectangleShape2D_7kwa6")
 
 [node name="CollisionShape2D16" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=1298233146]
-position = Vector2(1792, -128)
+position = Vector2(1792, -280)
 shape = SubResource("RectangleShape2D_b5l3g")
 
 [node name="CollisionShape2D17" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=151721809]
@@ -347,7 +348,7 @@ position = Vector2(2080, -280)
 shape = SubResource("RectangleShape2D_48mxg")
 
 [node name="CollisionShape2D18" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=1563712187]
-position = Vector2(2064, 0)
+position = Vector2(2064, -52)
 shape = SubResource("RectangleShape2D_jysyc")
 
 [node name="CollisionShape2D19" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=1967577251]
