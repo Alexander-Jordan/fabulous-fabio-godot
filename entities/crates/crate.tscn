@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dqs3jnb47pdbu" path="res://entities/crates/crate.gd" id="1_eird3"]
 [ext_resource type="AudioStream" uid="uid://bkwin0um2tmk6" path="res://entities/crates/crateBump.wav" id="2_crcjd"]
 [ext_resource type="AudioStream" uid="uid://dctl51kjbuigq" path="res://entities/crates/explosion.wav" id="2_eird3"]
+[ext_resource type="Script" uid="uid://bn26pevojn8qh" path="res://utilities/change_direction_trigger/change_direction_trigger.gd" id="5_gbs07"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dv1f4"]
 atlas = ExtResource("1_5v8se")
@@ -29,6 +30,9 @@ size = Vector2(12, 4)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dv1f4"]
 size = Vector2(16, 16)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sxkcy"]
+size = Vector2(16, 12)
+
 [node name="Crate" type="StaticBody2D" unique_id=1019459414]
 collision_layer = 3
 collision_mask = 0
@@ -53,3 +57,10 @@ shape = SubResource("RectangleShape2D_crcjd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1376885715]
 shape = SubResource("RectangleShape2D_dv1f4")
+
+[node name="ChangeDirectionTrigger" type="Area2D" parent="." unique_id=198815902]
+script = ExtResource("5_gbs07")
+metadata/_custom_type_script = "uid://bn26pevojn8qh"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=1744640765]
+shape = SubResource("RectangleShape2D_sxkcy")

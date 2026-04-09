@@ -75,7 +75,7 @@ size = Vector2(14, 3)
 size = Vector2(14, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7tpcx"]
-size = Vector2(16, 8)
+size = Vector2(16, 6)
 
 [node name="Slim" type="CharacterBody2D" unique_id=2030608081]
 collision_layer = 4

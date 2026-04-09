@@ -1,4 +1,4 @@
-class_name Health extends RigidBody2D
+class_name HealthRigidbody extends RigidBody2D
 
 #region VARIABLES
 @onready var collectable_2d: Collectable2D = $Collectable2D

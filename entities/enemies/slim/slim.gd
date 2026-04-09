@@ -24,12 +24,12 @@ func _ready() -> void:
 	visible_on_screen_notifier_2d.screen_entered.connect(on_screen_entered)
 	visible_on_screen_notifier_2d.screen_exited.connect(on_screen_exited)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if velocity.y < FALL_SPEED_MAX:
 		velocity.y += get_gravity().y * delta
 	
-	if visible_on_screen and !dead:
-		velocity.x = direction_handler.direction.x * SPEED_AMPLIFIER * delta
+	if !dead:
+		velocity.x = direction_handler.direction.x * SPEED_AMPLIFIER * delta if visible_on_screen else 0.0
 	
 	move_and_slide()
 
