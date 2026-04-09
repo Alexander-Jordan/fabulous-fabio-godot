@@ -78,6 +78,7 @@ size = Vector2(14, 6)
 size = Vector2(16, 8)
 
 [node name="Slim" type="CharacterBody2D" unique_id=2030608081]
+collision_layer = 4
 script = ExtResource("1_smcj1")
 metadata/_custom_type_script = "uid://cq2y3nmbphm3j"
 

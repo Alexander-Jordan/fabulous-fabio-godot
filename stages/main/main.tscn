@@ -62,7 +62,7 @@ scenes/2/scene = ExtResource("6_17rgw")
 scenes/3/scene = ExtResource("6_woy08")
 
 [sub_resource type="TileSet" id="TileSet_woy08"]
-physics_layer_0/collision_layer = 3
+physics_layer_0/collision_layer = 7
 sources/0 = SubResource("TileSetAtlasSource_usqqw")
 sources/1 = SubResource("TileSetScenesCollectionSource_woy08")
 
@@ -81,10 +81,10 @@ shader_parameter/scale_value = 0.0
 size = Vector2(16, 448)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0phs"]
-size = Vector2(16, 448)
+size = Vector2(16, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8v7n"]
-size = Vector2(16, 448)
+size = Vector2(16, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlblm"]
 size = Vector2(16, 56)
@@ -207,19 +207,19 @@ tile_set = SubResource("TileSet_woy08")
 position = Vector2(344, 200)
 
 [node name="Slim2" parent="." unique_id=2139561321 instance=ExtResource("8_drn0y")]
-position = Vector2(696, 200)
+position = Vector2(656, 200)
 
 [node name="Slim3" parent="." unique_id=723836900 instance=ExtResource("8_drn0y")]
-position = Vector2(1248, 200)
+position = Vector2(1232, 200)
 
 [node name="Slim4" parent="." unique_id=580033819 instance=ExtResource("8_drn0y")]
-position = Vector2(1376, 200)
+position = Vector2(1360, 200)
 
 [node name="Slim5" parent="." unique_id=1312411704 instance=ExtResource("8_drn0y")]
-position = Vector2(1848, 200)
+position = Vector2(1864, 200)
 
 [node name="Slim6" parent="." unique_id=1577504293 instance=ExtResource("8_drn0y")]
-position = Vector2(2160, 136)
+position = Vector2(2144, 136)
 
 [node name="Slim7" parent="." unique_id=758587341 instance=ExtResource("8_drn0y")]
 position = Vector2(2304, 72)
@@ -284,11 +284,11 @@ position = Vector2(-384, -216)
 shape = SubResource("RectangleShape2D_0eiup")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=994841600]
-position = Vector2(0, -216)
+position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_x0phs")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=980032224]
-position = Vector2(208, -216)
+position = Vector2(208, -4)
 shape = SubResource("RectangleShape2D_i8v7n")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ChangeDirectionTrigger" unique_id=2133139886]
