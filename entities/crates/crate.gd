@@ -23,6 +23,7 @@ var disabled: bool = false:
 #region FUNCTIONS
 func _ready() -> void:
 	area_2d.body_entered.connect(on_area_2d_body_entered)
+	GM.gravity_vector_changed.connect(on_gravity_vector_changed)
 
 func animate_crate_bump() -> void:
 	var tween = create_tween()
@@ -42,6 +43,9 @@ func on_area_2d_body_entered(body: Node2D) -> void:
 	AS.spawn(global_position, audio_bump)
 	animate_crate_bump()
 	spawn_item(Vector2(global_position.x, global_position.y - (GM.gravity_vector.y * 10)))
+
+func on_gravity_vector_changed(gravity_vector: Vector2) -> void:
+	animated_sprite_2d.flip_v = true if gravity_vector.y < 0 else false
 
 func spawn_item(spawn_point: Vector2) -> void:
 	if items_count <= 0:

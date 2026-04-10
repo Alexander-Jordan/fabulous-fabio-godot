@@ -15,6 +15,7 @@ const RUN_SPEED_MAX: int = 150
 
 #region VARIABLES
 @export var audio_jump: AudioStream
+@export var test: Vector2
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -86,6 +87,8 @@ func _process(_delta: float) -> void:
 	direction = Input.get_axis('left', 'right')
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed('jump'):
+		test.y = (up_direction.y * JUMP_FORCE) * delta
 	if direction != 0.0 and !crouching:
 		velocity.x += direction * RUN_SPEED_AMPLIFIER * delta
 		velocity.x = clampf(velocity.x, -RUN_SPEED_MAX, RUN_SPEED_MAX)
@@ -115,7 +118,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed('jump'):
 			audio_stream_player_2d.stream = audio_jump
 			audio_stream_player_2d.play()
-			velocity.y -= JUMP_FORCE * delta
+			velocity.y += (up_direction.y * JUMP_FORCE) * delta
 			jump_time = JUMP_TIME
 	else:
 		animation = 'jump' if !stunned else 'die'
@@ -182,7 +185,7 @@ func on_destructed(amount: int, from: Vector2) -> void:
 	SS.stats.health -= amount
 	stunned = true
 	var from_direction: Vector2 = from.direction_to(global_position)
-	velocity = Vector2(from_direction.x * 200, -200)
+	velocity = Vector2(from_direction.x * 200, 200) * -GM.gravity_vector
 	jump_time = 0.0 # prevent jumping mid-stunned
 
 func on_gravity_vector_changed(gravity_vector: Vector2) -> void:

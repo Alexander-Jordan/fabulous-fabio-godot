@@ -9,5 +9,10 @@ var direction: Vector2 = Vector2(-1, 0):
 
 signal direction_changed(direction: Vector2)
 
-func change_direction() -> void:
-	direction = -direction
+func change_direction(suggested_direction: Vector2 = Vector2.ZERO) -> void:
+	# default behavior: just mirror current direction
+	if suggested_direction == Vector2.ZERO:
+		direction = -direction.normalized()
+		return
+	
+	direction = suggested_direction.normalized()
