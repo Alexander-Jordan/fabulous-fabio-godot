@@ -25,6 +25,9 @@ func _ready() -> void:
 	visible_on_screen_notifier_2d.screen_exited.connect(on_screen_exited)
 
 func _physics_process(delta: float) -> void:
+	if is_on_wall():
+		direction_handler.change_direction()
+	
 	if velocity.y < FALL_SPEED_MAX:
 		velocity.y += get_gravity().y * delta
 	

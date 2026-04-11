@@ -15,7 +15,6 @@ const RUN_SPEED_MAX: int = 150
 
 #region VARIABLES
 @export var audio_jump: AudioStream
-@export var test: Vector2
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
@@ -87,8 +86,6 @@ func _process(_delta: float) -> void:
 	direction = Input.get_axis('left', 'right')
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed('jump'):
-		test.y = (up_direction.y * JUMP_FORCE) * delta
 	if direction != 0.0 and !crouching:
 		velocity.x += direction * RUN_SPEED_AMPLIFIER * delta
 		velocity.x = clampf(velocity.x, -RUN_SPEED_MAX, RUN_SPEED_MAX)
@@ -148,7 +145,7 @@ func _ready() -> void:
 		SS.stats.health = destructable_2d.health
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed('gravity') and is_on_floor():
+	if event.is_action_pressed('gravity') and is_on_floor() and !finished:
 		GM.gravity_vector = -GM.gravity_vector
 
 func load_menu() -> void:
