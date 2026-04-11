@@ -21,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://bo2e1pr3dox8l" path="res://utilities/finish_area/marimba-win-f-2-209688.mp3" id="13_2iamo"]
 [ext_resource type="PackedScene" uid="uid://c5rx8w61lck81" path="res://ui/hud/hud.tscn" id="14_17rgw"]
 [ext_resource type="AudioStream" uid="uid://cns1topdnloqy" path="res://entities/coin/pickupCoin.wav" id="14_ie2l8"]
-[ext_resource type="Script" uid="uid://bn26pevojn8qh" path="res://utilities/change_direction_trigger/change_direction_trigger.gd" id="20_i8v7n"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_802tp"]
 normal = Vector2(0, 1)
@@ -77,21 +76,6 @@ size = Vector2(512, 1)
 shader = ExtResource("8_axbkc")
 shader_parameter/alpha_value = 0.0
 shader_parameter/scale_value = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_m5mqk"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kjjn"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlblm"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gjybb"]
-size = Vector2(16, 16)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iled3"]
-size = Vector2(16, 16)
 
 [node name="Main" type="Node2D" unique_id=201420688]
 
@@ -248,39 +232,3 @@ tile_set = ExtResource("9_axbkc")
 
 [node name="Hud" parent="CanvasLayer" unique_id=1376081244 node_paths=PackedStringArray("fabio") instance=ExtResource("14_17rgw")]
 fabio = NodePath("../../Fabio")
-
-[node name="ChangeDirectionTriggerLeft" type="Area2D" parent="." unique_id=449109698]
-position = Vector2(376, 200)
-script = ExtResource("20_i8v7n")
-suggested_direction = Vector2(-1, 0)
-metadata/_custom_type_script = "uid://bn26pevojn8qh"
-
-[node name="CollisionShape2D9" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=911578853]
-position = Vector2(752, 0)
-shape = SubResource("RectangleShape2D_m5mqk")
-
-[node name="CollisionShape2D11" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=34093203]
-position = Vector2(848, 0)
-shape = SubResource("RectangleShape2D_6kjjn")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=207656471]
-position = Vector2(320, -64)
-shape = SubResource("RectangleShape2D_mlblm")
-
-[node name="ChangeDirectionTriggerRight" type="Area2D" parent="." unique_id=1447724931]
-position = Vector2(376, 200)
-script = ExtResource("20_i8v7n")
-suggested_direction = Vector2(1, 0)
-metadata/_custom_type_script = "uid://bn26pevojn8qh"
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=2133139886]
-position = Vector2(224, -64)
-shape = SubResource("RectangleShape2D_mlblm")
-
-[node name="CollisionShape2D8" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=1956055877]
-position = Vector2(688, 0)
-shape = SubResource("RectangleShape2D_gjybb")
-
-[node name="CollisionShape2D10" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=2058818981]
-position = Vector2(784, 0)
-shape = SubResource("RectangleShape2D_iled3")

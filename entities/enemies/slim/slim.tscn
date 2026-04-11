@@ -125,3 +125,11 @@ shape = SubResource("RectangleShape2D_7tpcx")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1237612699]
 rect = Rect2(-100, -100, 200, 200)
+
+[node name="RayCast2D_left" type="RayCast2D" parent="." unique_id=1969852475]
+position = Vector2(-6, 0)
+target_position = Vector2(0, 7)
+
+[node name="RayCast2D_right" type="RayCast2D" parent="." unique_id=1349384827]
+position = Vector2(6, 0)
+target_position = Vector2(0, 7)
