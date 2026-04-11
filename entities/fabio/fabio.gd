@@ -148,7 +148,7 @@ func _ready() -> void:
 		SS.stats.health = destructable_2d.health
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed('gravity'):
+	if event.is_action_pressed('gravity') and is_on_floor():
 		GM.gravity_vector = -GM.gravity_vector
 
 func load_menu() -> void:
@@ -179,6 +179,7 @@ func on_destroyed() -> void:
 	dead = true
 	direction = 0.0
 	await get_tree().create_timer(1.0).timeout
+	GM.gravity_vector = Vector2.DOWN # reset gravity
 	load_menu()
 
 func on_destructed(amount: int, from: Vector2) -> void:
