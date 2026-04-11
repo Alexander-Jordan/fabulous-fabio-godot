@@ -308,6 +308,14 @@ shape = SubResource("RectangleShape2D_6kjjn")
 position = Vector2(1424, -128)
 shape = SubResource("RectangleShape2D_7kwa6")
 
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=1391453079]
+position = Vector2(1136, -176)
+shape = SubResource("RectangleShape2D_6kjjn")
+
+[node name="CollisionShape2D13" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=1043853659]
+position = Vector2(1232, -176)
+shape = SubResource("RectangleShape2D_6kjjn")
+
 [node name="ChangeDirectionTriggerRight" type="Area2D" parent="." unique_id=1447724931]
 position = Vector2(376, 200)
 script = ExtResource("20_i8v7n")
@@ -333,3 +341,11 @@ shape = SubResource("RectangleShape2D_iled3")
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=431621050]
 position = Vector2(1264, -128)
 shape = SubResource("RectangleShape2D_gvgmq")
+
+[node name="CollisionShape2D11" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=585118170]
+position = Vector2(1072, -176)
+shape = SubResource("RectangleShape2D_iled3")
+
+[node name="CollisionShape2D12" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=2127792371]
+position = Vector2(1168, -176)
+shape = SubResource("RectangleShape2D_iled3")
