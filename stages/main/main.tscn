@@ -88,19 +88,13 @@ size = Vector2(16, 112)
 size = Vector2(16, 24)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crusu"]
-size = Vector2(32, 176)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5mqk"]
-size = Vector2(16, 80)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6kjjn"]
-size = Vector2(16, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_i80q7"]
-size = Vector2(16, 112)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_48mxg"]
-size = Vector2(16, 112)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7kwa6"]
 size = Vector2(16, 112)
@@ -109,19 +103,13 @@ size = Vector2(16, 112)
 size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlblm"]
-size = Vector2(32, 176)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gjybb"]
-size = Vector2(16, 80)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iled3"]
-size = Vector2(16, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw17s"]
-size = Vector2(16, 112)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5l3g"]
-size = Vector2(16, 112)
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvgmq"]
 size = Vector2(16, 112)
@@ -305,24 +293,16 @@ position = Vector2(-48, -4)
 shape = SubResource("RectangleShape2D_x0phs")
 
 [node name="CollisionShape2D5" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=1691449794]
-position = Vector2(328, -128)
+position = Vector2(320, -64)
 shape = SubResource("RectangleShape2D_crusu")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=911578853]
-position = Vector2(752, -32)
+position = Vector2(752, 0)
 shape = SubResource("RectangleShape2D_m5mqk")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=34093203]
-position = Vector2(848, -32)
+position = Vector2(848, 0)
 shape = SubResource("RectangleShape2D_6kjjn")
-
-[node name="CollisionShape2D19" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=1967577251]
-position = Vector2(1136, -128)
-shape = SubResource("RectangleShape2D_i80q7")
-
-[node name="CollisionShape2D17" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=151721809]
-position = Vector2(1232, -128)
-shape = SubResource("RectangleShape2D_48mxg")
 
 [node name="CollisionShape2D15" type="CollisionShape2D" parent="ChangeDirectionTriggerLeft" unique_id=1839046973]
 position = Vector2(1424, -128)
@@ -339,24 +319,16 @@ position = Vector2(192, -8)
 shape = SubResource("RectangleShape2D_i8v7n")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=2133139886]
-position = Vector2(216, -128)
+position = Vector2(224, -64)
 shape = SubResource("RectangleShape2D_mlblm")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=1956055877]
-position = Vector2(688, -32)
+position = Vector2(688, 0)
 shape = SubResource("RectangleShape2D_gjybb")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=2058818981]
-position = Vector2(784, -32)
+position = Vector2(784, 0)
 shape = SubResource("RectangleShape2D_iled3")
-
-[node name="CollisionShape2D12" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=1039494854]
-position = Vector2(1072, -128)
-shape = SubResource("RectangleShape2D_gw17s")
-
-[node name="CollisionShape2D16" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=1298233146]
-position = Vector2(1168, -128)
-shape = SubResource("RectangleShape2D_b5l3g")
 
 [node name="CollisionShape2D13" type="CollisionShape2D" parent="ChangeDirectionTriggerRight" unique_id=431621050]
 position = Vector2(1264, -128)

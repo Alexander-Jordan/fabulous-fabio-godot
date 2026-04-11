@@ -31,8 +31,10 @@ func _physics_process(delta: float) -> void:
 	if velocity.y < FALL_SPEED_MAX:
 		velocity.y += get_gravity().y * delta
 	
-	if !dead:
+	if !dead and is_on_floor():
 		velocity.x = direction_handler.direction.x * SPEED_AMPLIFIER * delta if visible_on_screen else 0.0
+	else:
+		velocity.x = 0.0
 	
 	move_and_slide()
 
@@ -49,6 +51,7 @@ func on_destroyed() -> void:
 
 func on_gravity_vector_changed(_gravity_vector: Vector2) -> void:
 	animated_sprite_2d.flip_v = !animated_sprite_2d.flip_v
+	up_direction = -up_direction
 
 func on_screen_entered() -> void:
 	visible_on_screen = true
