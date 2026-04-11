@@ -256,7 +256,7 @@ position = Vector2(256, 0)
 shape = SubResource("RectangleShape2D_drn0y")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="FinishArea" unique_id=870457805]
-position = Vector2(256, -176)
+position = Vector2(256, -175)
 shape = SubResource("RectangleShape2D_drn0y")
 
 [node name="area2d_xray_trigger" type="Area2D" parent="." unique_id=950870279]
