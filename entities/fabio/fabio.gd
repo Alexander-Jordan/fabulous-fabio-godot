@@ -18,6 +18,7 @@ const RUN_SPEED_MAX: int = 150
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var checkpoint_trigger: CheckpointTrigger = $CheckpointTrigger
 @onready var collector_2d: Collector2D = $Collector2D
 @onready var destructable_2d: Destructable2D = $Destructable2D
 @onready var destructor_2d_bottom: Destructor2D = $destructor2d_bottom
@@ -177,7 +178,9 @@ func on_destroyed() -> void:
 	direction = 0.0
 	await get_tree().create_timer(1.0).timeout
 	GM.gravity_vector = Vector2.DOWN # reset gravity
-	load_menu()
+	global_position = checkpoint_trigger.last_checkpoint.global_position
+	dead = false
+	set_collision_mask_value(1, true)
 
 func on_destructed(amount: int, from: Vector2) -> void:
 	SS.stats.health -= amount

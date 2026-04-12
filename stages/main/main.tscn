@@ -21,6 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://bo2e1pr3dox8l" path="res://utilities/finish_area/marimba-win-f-2-209688.mp3" id="13_2iamo"]
 [ext_resource type="PackedScene" uid="uid://c5rx8w61lck81" path="res://ui/hud/hud.tscn" id="14_17rgw"]
 [ext_resource type="AudioStream" uid="uid://cns1topdnloqy" path="res://entities/coin/pickupCoin.wav" id="14_ie2l8"]
+[ext_resource type="Script" uid="uid://cnj8nvyxyv6ss" path="res://utilities/checkpoint_system/checkpoint_system.gd" id="22_x0phs"]
+[ext_resource type="Script" uid="uid://cpd7j6cnvtlee" path="res://utilities/checkpoint_system/checkpoint.gd" id="23_mlblm"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_802tp"]
 normal = Vector2(0, 1)
@@ -76,6 +78,18 @@ size = Vector2(512, 1)
 shader = ExtResource("8_axbkc")
 shader_parameter/alpha_value = 0.0
 shader_parameter/scale_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlblm"]
+size = Vector2(64, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crusu"]
+size = Vector2(80, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ux6lt"]
+size = Vector2(112, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uof2y"]
+size = Vector2(32, 96)
 
 [node name="Main" type="Node2D" unique_id=201420688]
 
@@ -232,3 +246,40 @@ tile_set = ExtResource("9_axbkc")
 
 [node name="Hud" parent="CanvasLayer" unique_id=1376081244 node_paths=PackedStringArray("fabio") instance=ExtResource("14_17rgw")]
 fabio = NodePath("../../Fabio")
+
+[node name="CheckpointSystem" type="Node2D" parent="." unique_id=2019517129]
+script = ExtResource("22_x0phs")
+metadata/_custom_type_script = "uid://cnj8nvyxyv6ss"
+
+[node name="Checkpoint1" type="Area2D" parent="CheckpointSystem" unique_id=1250222617]
+position = Vector2(48, 160)
+script = ExtResource("23_mlblm")
+metadata/_custom_type_script = "uid://cpd7j6cnvtlee"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointSystem/Checkpoint1" unique_id=1442099820]
+position = Vector2(0, 24)
+shape = SubResource("RectangleShape2D_mlblm")
+
+[node name="Checkpoint2" type="Area2D" parent="CheckpointSystem" unique_id=1300229737]
+position = Vector2(872, 32)
+script = ExtResource("23_mlblm")
+metadata/_custom_type_script = "uid://cpd7j6cnvtlee"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointSystem/Checkpoint2" unique_id=1134224493]
+shape = SubResource("RectangleShape2D_crusu")
+
+[node name="Checkpoint3" type="Area2D" parent="CheckpointSystem" unique_id=1411612623]
+position = Vector2(1320, 168)
+script = ExtResource("23_mlblm")
+metadata/_custom_type_script = "uid://cpd7j6cnvtlee"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointSystem/Checkpoint3" unique_id=1593496455]
+shape = SubResource("RectangleShape2D_ux6lt")
+
+[node name="Checkpoint4" type="Area2D" parent="CheckpointSystem" unique_id=149923220]
+position = Vector2(1776, 80)
+script = ExtResource("23_mlblm")
+metadata/_custom_type_script = "uid://cpd7j6cnvtlee"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointSystem/Checkpoint4" unique_id=1010723416]
+shape = SubResource("RectangleShape2D_uof2y")
