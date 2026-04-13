@@ -80,13 +80,13 @@ shader_parameter/alpha_value = 0.0
 shader_parameter/scale_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlblm"]
-size = Vector2(64, 48)
+size = Vector2(96, 240)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_crusu"]
 size = Vector2(80, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ux6lt"]
-size = Vector2(112, 80)
+size = Vector2(112, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uof2y"]
 size = Vector2(32, 96)
@@ -106,7 +106,7 @@ shape = SubResource("WorldBoundaryShape2D_802tp")
 shape = SubResource("WorldBoundaryShape2D_60rri")
 
 [node name="collisionshape2d_right" type="CollisionShape2D" parent="boundaries/StaticBody2D" unique_id=73746578]
-position = Vector2(3200, 0)
+position = Vector2(3168, 0)
 shape = SubResource("WorldBoundaryShape2D_5powy")
 
 [node name="Destructor2D" type="Area2D" parent="boundaries" unique_id=1283044058]
@@ -135,7 +135,7 @@ position = Vector2(48, 208)
 [node name="Camera" type="Camera2D" parent="Fabio" unique_id=1056684055]
 limit_left = 0
 limit_top = -144
-limit_right = 3168
+limit_right = 3136
 limit_bottom = 240
 position_smoothing_enabled = true
 position_smoothing_speed = 6.0
@@ -252,34 +252,37 @@ script = ExtResource("22_x0phs")
 metadata/_custom_type_script = "uid://cnj8nvyxyv6ss"
 
 [node name="Checkpoint1" type="Area2D" parent="CheckpointSystem" unique_id=1250222617]
-position = Vector2(48, 160)
+position = Vector2(48, 192)
 script = ExtResource("23_mlblm")
 metadata/_custom_type_script = "uid://cpd7j6cnvtlee"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointSystem/Checkpoint1" unique_id=1442099820]
-position = Vector2(0, 24)
+position = Vector2(0, -104)
 shape = SubResource("RectangleShape2D_mlblm")
 
 [node name="Checkpoint2" type="Area2D" parent="CheckpointSystem" unique_id=1300229737]
-position = Vector2(872, 32)
+position = Vector2(872, 64)
 script = ExtResource("23_mlblm")
 metadata/_custom_type_script = "uid://cpd7j6cnvtlee"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointSystem/Checkpoint2" unique_id=1134224493]
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_crusu")
 
 [node name="Checkpoint3" type="Area2D" parent="CheckpointSystem" unique_id=1411612623]
-position = Vector2(1320, 168)
+position = Vector2(1320, 192)
 script = ExtResource("23_mlblm")
 metadata/_custom_type_script = "uid://cpd7j6cnvtlee"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointSystem/Checkpoint3" unique_id=1593496455]
+position = Vector2(0, -80)
 shape = SubResource("RectangleShape2D_ux6lt")
 
 [node name="Checkpoint4" type="Area2D" parent="CheckpointSystem" unique_id=149923220]
-position = Vector2(1776, 80)
+position = Vector2(1776, 112)
 script = ExtResource("23_mlblm")
 metadata/_custom_type_script = "uid://cpd7j6cnvtlee"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointSystem/Checkpoint4" unique_id=1010723416]
+position = Vector2(0, -32)
 shape = SubResource("RectangleShape2D_uof2y")

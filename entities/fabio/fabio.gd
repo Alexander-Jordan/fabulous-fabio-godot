@@ -177,6 +177,7 @@ func on_destroyed() -> void:
 	dead = true
 	direction = 0.0
 	await get_tree().create_timer(1.0).timeout
+	velocity = Vector2.ZERO
 	GM.gravity_vector = Vector2.DOWN # reset gravity
 	global_position = checkpoint_trigger.last_checkpoint.global_position
 	dead = false
