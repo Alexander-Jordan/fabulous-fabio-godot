@@ -72,6 +72,11 @@ var stunned: bool = false:
 			timer_stunned.start()
 #endregion
 
+#region SIGNALS
+signal died
+signal respawned
+#endregion
+
 #region FUNCTIONS
 func _process(_delta: float) -> void:
 	if finished or dead:
@@ -185,10 +190,10 @@ func on_destroyed() -> void:
 	set_collision_mask_value(1, false)
 	dead = true
 	direction = 0.0
+	collector_2d.process_mode = PROCESS_MODE_DISABLED
+	died.emit()
 	await get_tree().create_timer(1.0).timeout
-	teleport_to_position(checkpoint_trigger.last_checkpoint.global_position)
-	dead = false
-	set_collision_mask_value(1, true)
+	respawn()
 
 func on_destructed(amount: int, from: Vector2) -> void:
 	SS.stats.health -= amount
@@ -212,6 +217,15 @@ func on_timer_stunned_timeout() -> void:
 	destructor_2d_bottom.process_mode = PROCESS_MODE_INHERIT
 	destructor_2d_top.process_mode = PROCESS_MODE_INHERIT
 	destructable_2d.process_mode = PROCESS_MODE_INHERIT
+
+func respawn() -> void:
+	teleport_to_position(checkpoint_trigger.last_checkpoint.global_position)
+	dead = false
+	destructable_2d.health = 1
+	SS.stats.health = 1
+	set_collision_mask_value(1, true)
+	collector_2d.process_mode = PROCESS_MODE_INHERIT
+	respawned.emit()
 
 func teleport_to_position(position: Vector2) -> void:
 	velocity = Vector2.ZERO
