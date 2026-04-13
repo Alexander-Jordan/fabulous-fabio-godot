@@ -148,11 +148,20 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('gravity') and is_on_floor() and !finished:
 		GM.gravity_vector = -GM.gravity_vector
+	if event.is_action_pressed('dev_checkpoint_1'):
+		teleport_to_position(CPS.checkpoints[0].global_position)
+	if event.is_action_pressed('dev_checkpoint_2'):
+		teleport_to_position(CPS.checkpoints[1].global_position)
+	if event.is_action_pressed('dev_checkpoint_3'):
+		teleport_to_position(CPS.checkpoints[2].global_position)
+	if event.is_action_pressed('dev_checkpoint_4'):
+		teleport_to_position(CPS.checkpoints[3].global_position)
 
 func load_menu() -> void:
 	CS.despawn_all()
 	HS.despawn_all()
 	FTS.despawn_all()
+	CPS.checkpoints.clear()
 	get_tree().change_scene_to_file("res://stages/menu/menu.tscn")
 
 func on_collected(collectable: Collectable2D) -> void:
@@ -177,9 +186,7 @@ func on_destroyed() -> void:
 	dead = true
 	direction = 0.0
 	await get_tree().create_timer(1.0).timeout
-	velocity = Vector2.ZERO
-	GM.gravity_vector = Vector2.DOWN # reset gravity
-	global_position = checkpoint_trigger.last_checkpoint.global_position
+	teleport_to_position(checkpoint_trigger.last_checkpoint.global_position)
 	dead = false
 	set_collision_mask_value(1, true)
 
@@ -205,4 +212,9 @@ func on_timer_stunned_timeout() -> void:
 	destructor_2d_bottom.process_mode = PROCESS_MODE_INHERIT
 	destructor_2d_top.process_mode = PROCESS_MODE_INHERIT
 	destructable_2d.process_mode = PROCESS_MODE_INHERIT
+
+func teleport_to_position(position: Vector2) -> void:
+	velocity = Vector2.ZERO
+	GM.gravity_vector = Vector2.DOWN # reset gravity
+	global_position = position
 #endregion
