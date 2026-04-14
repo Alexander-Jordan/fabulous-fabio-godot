@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5rx8w61lck81"]
+[gd_scene format=3 uid="uid://c5rx8w61lck81"]
 
 [ext_resource type="Script" uid="uid://ctefadte2rfa5" path="res://ui/hud/hud.gd" id="1_4d6w6"]
 [ext_resource type="Theme" uid="uid://dke1csv7tv7ku" path="res://config/theme/default_theme.tres" id="1_e0nub"]
@@ -8,7 +8,7 @@
 atlas = ExtResource("2_e0nub")
 region = Rect2(0, 16, 16, 16)
 
-[node name="Hud" type="Control"]
+[node name="Hud" type="Control" unique_id=391431594]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,7 @@ theme = ExtResource("1_e0nub")
 script = ExtResource("1_4d6w6")
 metadata/_custom_type_script = "uid://ctefadte2rfa5"
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=215013685]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -31,35 +31,35 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=713896439]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=375869527]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="texturerect_health" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="texturerect_health" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1965038734]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = SubResource("AtlasTexture_w75iv")
 
-[node name="texturerect_health2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="texturerect_health2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=748670166]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = SubResource("AtlasTexture_w75iv")
 
-[node name="texturerect_health3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="texturerect_health3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=983564886]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 texture = SubResource("AtlasTexture_w75iv")
 
-[node name="label_score" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="label_score" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=136445842]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "00000000"
@@ -67,15 +67,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1736413993]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="label_timer" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="label_timer" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1559911414]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "000"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 128.0
+[node name="Timer" type="Timer" parent="." unique_id=1328968210]
+wait_time = 256.0
 one_shot = true

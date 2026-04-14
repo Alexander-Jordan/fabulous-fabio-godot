@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b3x22yd8gl660" path="res://common/destruct/destructor_2d.gd" id="4_3oh2s"]
 [ext_resource type="Script" uid="uid://cjixnbjcocece" path="res://common/destruct/destructible_2d.gd" id="5_gjah6"]
 [ext_resource type="AudioStream" uid="uid://bver4vq1odl6o" path="res://entities/enemies/enemyHit.wav" id="8_lncbu"]
+[ext_resource type="Script" uid="uid://8k4crpmgoxdi" path="res://utilities/checkpoint_system/checkpoint_trigger.gd" id="9_6vrrx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8hku4"]
 shader = ExtResource("2_f23iy")
@@ -112,6 +113,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eo4fn"]
+size = Vector2(11, 16)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ks7st"]
 size = Vector2(8, 16)
 
@@ -143,6 +147,14 @@ offset = Vector2(0, -16)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1602149865]
 bus = &"sfx"
+
+[node name="CheckpointTrigger" type="Area2D" parent="." unique_id=1123281011]
+script = ExtResource("9_6vrrx")
+metadata/_custom_type_script = "uid://8k4crpmgoxdi"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckpointTrigger" unique_id=651532686]
+position = Vector2(-0.5, -8)
+shape = SubResource("RectangleShape2D_eo4fn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=488050355]
 position = Vector2(0, -8)
