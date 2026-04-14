@@ -9,24 +9,24 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_4eukt"]
 radius = 8.06226
 
-[node name="CoinFloating" type="Node2D" unique_id=1063789402]
+[node name="CoinFloating" type="Node2D" unique_id=1458078060]
 script = ExtResource("1_dtuiu")
 metadata/_custom_type_script = "uid://cgn07masbqryx"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1109509583]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1037428188]
 sprite_frames = ExtResource("2_oalip")
 autoplay = "default"
 
-[node name="Collectable2D" type="Area2D" parent="." unique_id=1661243246]
+[node name="Collectable2D" type="Area2D" parent="." unique_id=795611772]
 script = ExtResource("3_2jgy2")
 audio_streams = Array[AudioStream]([ExtResource("4_4eukt")])
 identifier = "coin"
 metadata/_custom_type_script = "uid://cinn5yixd7nw6"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=47727095]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=1422389832]
 shape = SubResource("CircleShape2D_4eukt")
 
-[node name="Spawnable2D" type="Node2D" parent="." unique_id=788279253 node_paths=PackedStringArray("root_node")]
+[node name="Spawnable2D" type="Node2D" parent="." unique_id=309550070 node_paths=PackedStringArray("root_node")]
 script = ExtResource("4_2jgy2")
 root_node = NodePath("..")
 metadata/_custom_type_script = "uid://dx4t6l0hurfew"
