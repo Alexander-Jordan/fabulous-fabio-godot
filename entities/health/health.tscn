@@ -1,33 +1,33 @@
 [gd_scene format=3 uid="uid://bysn3615iyj2r"]
 
-[ext_resource type="Script" uid="uid://cgbjwlt4p0355" path="res://entities/health/health_rigidbody.gd" id="1_js0ly"]
-[ext_resource type="Texture2D" uid="uid://c1a4jh22v6npq" path="res://entities/health/heart_spritesheet.png" id="2_stvb0"]
-[ext_resource type="Script" uid="uid://cinn5yixd7nw6" path="res://common/collect/collectable_2d.gd" id="3_sqesm"]
-[ext_resource type="AudioStream" uid="uid://dknfceq170xst" path="res://entities/crates/mystery_crate/powerUp.wav" id="4_upd4a"]
-[ext_resource type="Script" uid="uid://dx4t6l0hurfew" path="res://common/spawnable/spawnable_2d.gd" id="5_cgd0q"]
+[ext_resource type="Script" uid="uid://cgbjwlt4p0355" path="res://entities/health/health.gd" id="1_x6cqt"]
+[ext_resource type="Texture2D" uid="uid://c1a4jh22v6npq" path="res://entities/health/heart_spritesheet.png" id="2_ix0t8"]
+[ext_resource type="Script" uid="uid://cinn5yixd7nw6" path="res://common/collect/collectable_2d.gd" id="3_h47vd"]
+[ext_resource type="AudioStream" uid="uid://dknfceq170xst" path="res://entities/crates/mystery_crate/powerUp.wav" id="4_5q466"]
+[ext_resource type="Script" uid="uid://dx4t6l0hurfew" path="res://common/spawnable/spawnable_2d.gd" id="4_18thd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v1d5x"]
-atlas = ExtResource("2_stvb0")
+atlas = ExtResource("2_ix0t8")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h47vd"]
-atlas = ExtResource("2_stvb0")
+atlas = ExtResource("2_ix0t8")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_18thd"]
-atlas = ExtResource("2_stvb0")
+atlas = ExtResource("2_ix0t8")
 region = Rect2(32, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5q466"]
-atlas = ExtResource("2_stvb0")
+atlas = ExtResource("2_ix0t8")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kvvh"]
-atlas = ExtResource("2_stvb0")
+atlas = ExtResource("2_ix0t8")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eyiiw"]
-atlas = ExtResource("2_stvb0")
+atlas = ExtResource("2_ix0t8")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lgupw"]
@@ -62,31 +62,30 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ix0t8"]
 radius = 7.0
 
-[node name="HealthRigidbody" type="RigidBody2D" unique_id=394402165]
+[node name="Health" type="RigidBody2D" unique_id=465879434]
 collision_layer = 0
 collision_mask = 2
-can_sleep = false
 lock_rotation = true
-script = ExtResource("1_js0ly")
+script = ExtResource("1_x6cqt")
 metadata/_custom_type_script = "uid://cgbjwlt4p0355"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1012794996]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=986520625]
 sprite_frames = SubResource("SpriteFrames_lgupw")
 autoplay = "default"
 
-[node name="Collectable2D" type="Area2D" parent="." unique_id=1638635999]
-script = ExtResource("3_sqesm")
-audio_streams = Array[AudioStream]([ExtResource("4_upd4a")])
+[node name="Collectable2D" type="Area2D" parent="." unique_id=381657584]
+script = ExtResource("3_h47vd")
+audio_streams = Array[AudioStream]([ExtResource("4_5q466")])
 identifier = "health"
 metadata/_custom_type_script = "uid://cinn5yixd7nw6"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=659037376]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=917745662]
 shape = SubResource("CircleShape2D_5q466")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1714740708]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2125069271]
 shape = SubResource("CircleShape2D_ix0t8")
 
-[node name="Spawnable2D" type="Node2D" parent="." unique_id=952475692 node_paths=PackedStringArray("root_node")]
-script = ExtResource("5_cgd0q")
+[node name="Spawnable2D" type="Node2D" parent="." unique_id=388403000 node_paths=PackedStringArray("root_node")]
+script = ExtResource("4_18thd")
 root_node = NodePath("..")
 metadata/_custom_type_script = "uid://dx4t6l0hurfew"

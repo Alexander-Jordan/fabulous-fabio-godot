@@ -13,34 +13,13 @@ extends Area2D
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 #endregion
 
-#region SIGNALS
-signal destructable_entered
-signal destructable_exited
-#endregion
-
 #region FUNCTIONS
 func _ready() -> void:
-	area_entered.connect(on_area_entered)
-	area_exited.connect(on_area_exited)
-
-func on_area_entered(area: Area2D) -> void:
-	var destructable := get_destructable_from_area(area)
-	if destructable is not Destructable2D:
-		return
-	destructable.destruct(destruct_amount, global_position, get_audio())
-	destructable_entered.emit()
-
-func on_area_exited(area: Area2D) -> void:
-	if get_destructable_from_area(area) is not Destructable2D:
-		return
-	destructable_exited.emit()
-
-func get_destructable_from_area(area: Area2D) -> Destructable2D:
-	if area is not Destructable2D:
-		return null
-	if area.identifier not in destructable_identifiers:
-		return null
-	return area
+	area_entered.connect(func(area: Area2D):
+		if area is Destructable2D:
+			if area.identifier in destructable_identifiers:
+				area.destruct(destruct_amount, global_position, get_audio())
+	)
 
 func get_audio() -> AudioStream:
 	if audio_streams.is_empty():

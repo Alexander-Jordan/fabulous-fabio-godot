@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://dke1csv7tv7ku" path="res://config/theme/default_theme.tres" id="1_5n37s"]
 [ext_resource type="Script" uid="uid://cksp12vom1tme" path="res://stages/menu/menu.gd" id="1_xh5sh"]
 
-[node name="Menu" type="Control" unique_id=2044927248]
+[node name="Menu" type="Control" unique_id=307245076]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,7 +15,7 @@ theme = ExtResource("1_5n37s")
 script = ExtResource("1_xh5sh")
 metadata/_custom_type_script = "uid://cksp12vom1tme"
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=931765249]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1434659304]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,10 +27,10 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1335550804]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1146043516]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1415496675]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1347617864]
 layout_mode = 2
 size_flags_vertical = 6
 theme_override_font_sizes/font_size = 32
@@ -40,17 +40,17 @@ horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1238927461]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=964673211]
 layout_mode = 2
 size_flags_vertical = 6
 
-[node name="button_start" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=164902513]
+[node name="button_start" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1501141854]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "START"
 
-[node name="button_quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1807355867]
+[node name="button_quit" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1682542522]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
