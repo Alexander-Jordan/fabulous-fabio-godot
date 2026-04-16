@@ -20,7 +20,20 @@ class_name StatsData extends Resource
 		
 		score = s
 		score_changed.emit(s)
+@export var star_1: bool = false:
+	set(s1):
+		star_1 = s1
+		star_collected.emit(1)
+@export var star_2: bool = false:
+	set(s2):
+		star_2 = s2
+		star_collected.emit(2)
+@export var star_3: bool = false:
+	set(s3):
+		star_3 = s3
+		star_collected.emit(3)
 
 signal health_changed(health: int)
 signal score_changed(score: int)
+signal star_collected(star: int)
 #endregion

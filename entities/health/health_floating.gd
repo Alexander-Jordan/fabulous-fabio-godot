@@ -12,9 +12,11 @@ func _ready() -> void:
 	spawnable_2d.is_spawned = true
 	GM.gravity_vector_changed.connect(on_gravity_vector_changed)
 
+func on_collected() -> void:
+	FTS.call_deferred('spawn', global_position, '100')
+	SS.stats.score += 100
+	spawnable_2d.despawn()
+
 func on_gravity_vector_changed(gravity_vector: Vector2) -> void:
 	animated_sprite_2d.flip_v = true if gravity_vector.y < 0 else false
-
-func on_collected() -> void:
-	spawnable_2d.despawn()
 #endregion
