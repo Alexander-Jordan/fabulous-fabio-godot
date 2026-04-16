@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://deh2dki1lw7je" path="res://entities/star/star.gd" id="1_ac6ni"]
 [ext_resource type="Texture2D" uid="uid://bjpdwlth4vqkq" path="res://entities/star/star.png" id="2_0u4q4"]
 [ext_resource type="Script" uid="uid://cinn5yixd7nw6" path="res://common/collect/collectable_2d.gd" id="3_2cat8"]
-[ext_resource type="AudioStream" uid="uid://cns1topdnloqy" path="res://entities/coin/pickupCoin.wav" id="4_ubkv5"]
+[ext_resource type="AudioStream" uid="uid://db6pbv788vcov" path="res://entities/star/star.wav" id="4_2cat8"]
 [ext_resource type="Script" uid="uid://dx4t6l0hurfew" path="res://common/spawnable/spawnable_2d.gd" id="5_0bfv2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gd3bk"]
@@ -84,6 +84,28 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_7dqbx"]
 radius = 19.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tx0m"]
+atlas = ExtResource("2_0u4q4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Curve" id="Curve_2cat8"]
+_limits = [-1.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_vx58a"]
+_limits = [0.0, 25.0, 0.0, 1.0]
+_data = [Vector2(0, 25), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_gkb8g"]
+_data = [Vector2(0, 1), 0.0, -1.708526, 0, 0, Vector2(1, 0), -0.14669158, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_2cat8"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="Star" type="Node2D" unique_id=1865267218]
 script = ExtResource("1_ac6ni")
 metadata/_custom_type_script = "uid://deh2dki1lw7je"
@@ -99,12 +121,35 @@ autoplay = &"hover"
 
 [node name="Collectable2D" type="Area2D" parent="." unique_id=657461728]
 script = ExtResource("3_2cat8")
-audio_streams = Array[AudioStream]([ExtResource("4_ubkv5")])
+audio_streams = Array[AudioStream]([ExtResource("4_2cat8")])
 identifier = "star"
 metadata/_custom_type_script = "uid://cinn5yixd7nw6"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=158134538]
 shape = SubResource("CircleShape2D_7dqbx")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=430700528]
+emitting = false
+amount = 20
+texture = SubResource("AtlasTexture_6tx0m")
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.5
+use_fixed_seed = true
+seed = 7
+emission_shape = 2
+emission_sphere_radius = 16.0
+direction = Vector2(0, 0)
+gravity = Vector2(0, 0)
+orbit_velocity_max = 0.5
+orbit_velocity_curve = SubResource("Curve_2cat8")
+radial_accel_min = 10.0
+radial_accel_max = 10.0
+radial_accel_curve = SubResource("Curve_vx58a")
+scale_amount_min = 0.0
+scale_amount_max = 0.5
+scale_amount_curve = SubResource("Curve_gkb8g")
+color_ramp = SubResource("Gradient_2cat8")
 
 [node name="Spawnable2D" type="Node2D" parent="." unique_id=845905104 node_paths=PackedStringArray("root_node")]
 script = ExtResource("5_0bfv2")
