@@ -162,7 +162,7 @@ shape = SubResource("RectangleShape2D_ks7st")
 
 [node name="Collector2D" type="Area2D" parent="." unique_id=754366905]
 script = ExtResource("3_l32ub")
-collectable_identifiers = Array[String](["coin", "health"])
+collectable_identifiers = Array[String](["coin", "health", "star"])
 metadata/_custom_type_script = "uid://crxmoyjq1vwwu"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collector2D" unique_id=910381149]

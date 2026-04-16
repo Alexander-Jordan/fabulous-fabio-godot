@@ -1,4 +1,4 @@
-class_name HealthFloating extends Node2D
+class_name Star extends Node2D
 
 #region VARIABLES
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
