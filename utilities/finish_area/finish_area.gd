@@ -21,7 +21,7 @@ func on_body_entered(body: Node2D) -> void:
 		if points > 0:
 			SS.stats.score += points
 			AS.spawn(global_position, audio_points)
-			FTS.call_deferred('spawn', body.global_position, str(points))
+			FTS.spawn(body.global_position, str(points))
 		
 		audio_stream_player.stream = audio_finished
 		audio_stream_player.volume_db = 0.0

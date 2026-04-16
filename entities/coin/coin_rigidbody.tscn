@@ -12,33 +12,32 @@ radius = 8.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wv18"]
 radius = 7.0
 
-[node name="Coin" type="RigidBody2D" unique_id=258747834]
+[node name="Coin" type="RigidBody2D" unique_id=1043279623]
 z_index = 5
 collision_layer = 0
 collision_mask = 2
-can_sleep = false
 lock_rotation = true
 script = ExtResource("1_wixg8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1398752118]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1587344660]
 sprite_frames = ExtResource("2_wixg8")
 autoplay = "default"
 frame_progress = 0.265464
 
-[node name="Collectable2D" type="Area2D" parent="." unique_id=372696488]
+[node name="Collectable2D" type="Area2D" parent="." unique_id=333620250]
 script = ExtResource("3_pi0ti")
 audio_streams = Array[AudioStream]([ExtResource("4_lu57q")])
 disabled = true
 identifier = "coin"
 metadata/_custom_type_script = "uid://cinn5yixd7nw6"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=1176423285]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=613326547]
 shape = SubResource("CircleShape2D_sogop")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1402035753]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=120045833]
 shape = SubResource("CircleShape2D_5wv18")
 
-[node name="Spawnable2D" type="Node2D" parent="." unique_id=308954929 node_paths=PackedStringArray("root_node")]
+[node name="Spawnable2D" type="Node2D" parent="." unique_id=1844220596 node_paths=PackedStringArray("root_node")]
 script = ExtResource("4_vtdu7")
 root_node = NodePath("..")
 metadata/_custom_type_script = "uid://dx4t6l0hurfew"
