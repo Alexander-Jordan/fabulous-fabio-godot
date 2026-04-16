@@ -62,48 +62,63 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8c81q"]
-size = Vector2(12, 8)
+size = Vector2(12, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7vpg4"]
 size = Vector2(14, 3)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_djbgf"]
-size = Vector2(14, 9)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jv4cu"]
+size = Vector2(14, 3)
 
-[node name="Slim" type="CharacterBody2D" unique_id=779644261]
-collision_layer = 0
-collision_mask = 0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_djbgf"]
+size = Vector2(14, 6)
+
+[node name="Slim" type="CharacterBody2D" unique_id=2030608081]
+collision_layer = 4
 script = ExtResource("1_smcj1")
 metadata/_custom_type_script = "uid://cq2y3nmbphm3j"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2101755088]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1526859981]
 sprite_frames = SubResource("SpriteFrames_is4ku")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.471871
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1436996419]
-position = Vector2(0, 3)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=671693416]
 shape = SubResource("RectangleShape2D_8c81q")
 
-[node name="Destructable2D" type="Area2D" parent="." unique_id=893936553]
+[node name="Destructable2D" type="Area2D" parent="." unique_id=1411782480]
 script = ExtResource("3_rsih1")
 identifier = "enemy_jumpable"
 metadata/_custom_type_script = "uid://cjixnbjcocece"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Destructable2D" unique_id=1228937692]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Destructable2D" unique_id=1949664351]
+process_mode = 1
 bus = &"sfx"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D" unique_id=22690058]
-position = Vector2(0, -2.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructable2D" unique_id=971863720]
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_7vpg4")
 
-[node name="Destructor2D" type="Area2D" parent="." unique_id=1264024652]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Destructable2D" unique_id=1515821009]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_jv4cu")
+
+[node name="Destructor2D" type="Area2D" parent="." unique_id=604126811]
 script = ExtResource("4_7vpg4")
 audio_streams = Array[AudioStream]([ExtResource("5_djbgf")])
 destructable_identifiers = Array[String](["fabio"])
 metadata/_custom_type_script = "uid://b3x22yd8gl660"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructor2D" unique_id=1039969855]
-position = Vector2(0, 3.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Destructor2D" unique_id=1381914846]
 shape = SubResource("RectangleShape2D_djbgf")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1237612699]
+rect = Rect2(-100, -100, 200, 200)
+
+[node name="RayCast2D_left" type="RayCast2D" parent="." unique_id=1969852475]
+position = Vector2(-6, 0)
+target_position = Vector2(0, 7)
+
+[node name="RayCast2D_right" type="RayCast2D" parent="." unique_id=1349384827]
+position = Vector2(6, 0)
+target_position = Vector2(0, 7)
