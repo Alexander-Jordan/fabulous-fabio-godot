@@ -11,5 +11,7 @@ func _ready() -> void:
 	spawnable_2d.is_spawned = true
 
 func on_collected() -> void:
+	FTS.call_deferred('spawn', global_position, '100')
+	SS.stats.score += 100
 	spawnable_2d.despawn()
 #endregion

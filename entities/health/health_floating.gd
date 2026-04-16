@@ -13,6 +13,8 @@ func _ready() -> void:
 	GM.gravity_vector_changed.connect(on_gravity_vector_changed)
 
 func on_collected() -> void:
+	FTS.call_deferred('spawn', global_position, '100')
+	SS.stats.score += 100
 	spawnable_2d.despawn()
 
 func on_gravity_vector_changed(gravity_vector: Vector2) -> void:
