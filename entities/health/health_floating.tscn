@@ -1,0 +1,82 @@
+[gd_scene format=3 uid="uid://b53fm6wpkbmut"]
+
+[ext_resource type="Script" uid="uid://cfh2gal7j7ln" path="res://entities/health/health_floating.gd" id="1_14p82"]
+[ext_resource type="Texture2D" uid="uid://c1a4jh22v6npq" path="res://entities/health/heart_spritesheet.png" id="2_fs5kf"]
+[ext_resource type="Script" uid="uid://cinn5yixd7nw6" path="res://common/collect/collectable_2d.gd" id="3_m76it"]
+[ext_resource type="AudioStream" uid="uid://dknfceq170xst" path="res://entities/crates/mystery_crate/powerUp.wav" id="4_l2yds"]
+[ext_resource type="Script" uid="uid://dx4t6l0hurfew" path="res://common/spawnable/spawnable_2d.gd" id="5_i1d6a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1d5x"]
+atlas = ExtResource("2_fs5kf")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h47vd"]
+atlas = ExtResource("2_fs5kf")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_18thd"]
+atlas = ExtResource("2_fs5kf")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5q466"]
+atlas = ExtResource("2_fs5kf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kvvh"]
+atlas = ExtResource("2_fs5kf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eyiiw"]
+atlas = ExtResource("2_fs5kf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lgupw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v1d5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h47vd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_18thd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5q466")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kvvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eyiiw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 16.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5q466"]
+radius = 8.0
+
+[node name="HealthFloating" type="Node2D" unique_id=512702035]
+script = ExtResource("1_14p82")
+metadata/_custom_type_script = "uid://cfh2gal7j7ln"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1012794996]
+sprite_frames = SubResource("SpriteFrames_lgupw")
+autoplay = "default"
+
+[node name="Collectable2D" type="Area2D" parent="." unique_id=1638635999]
+script = ExtResource("3_m76it")
+audio_streams = Array[AudioStream]([ExtResource("4_l2yds")])
+identifier = "health"
+metadata/_custom_type_script = "uid://cinn5yixd7nw6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collectable2D" unique_id=659037376]
+shape = SubResource("CircleShape2D_5q466")
+
+[node name="Spawnable2D" type="Node2D" parent="." unique_id=952475692 node_paths=PackedStringArray("root_node")]
+script = ExtResource("5_i1d6a")
+root_node = NodePath("..")
+metadata/_custom_type_script = "uid://dx4t6l0hurfew"
