@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsr7jdyh7mr7q"
-path="res://.godot/imported/tiles_16x16.png-1913ba70c4e09e3c419bb3ab4d797f1c.ctex"
+uid="uid://b6oltq35fmvcx"
+path="res://.godot/imported/star_icons.png-f03e7641b091b8d36401cca7430a0add.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stages/tileset/tiles_16x16.png"
-dest_files=["res://.godot/imported/tiles_16x16.png-1913ba70c4e09e3c419bb3ab4d797f1c.ctex"]
+source_file="res://entities/star/star_icons.png"
+dest_files=["res://.godot/imported/star_icons.png-f03e7641b091b8d36401cca7430a0add.ctex"]
 
 [params]
 
