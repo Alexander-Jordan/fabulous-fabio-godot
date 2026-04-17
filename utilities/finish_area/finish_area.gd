@@ -16,7 +16,9 @@ func _ready() -> void:
 func on_body_entered(body: Node2D) -> void:
 	if body is Fabio:
 		# award 100 points for every 10px the player jumped
-		var distance: float = body.global_position.distance_to(global_position)
+		var from: Vector2 = Vector2(body.global_position.x, 0)
+		var to: Vector2 = Vector2(global_position.x, 0)
+		var distance: float = from.distance_to(to)
 		var points: int = int(distance / 10) * 100
 		if points > 0:
 			SS.stats.score += points

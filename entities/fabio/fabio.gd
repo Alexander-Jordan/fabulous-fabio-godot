@@ -163,6 +163,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		teleport_to_position(CPS.checkpoints[3].global_position)
 
 func load_menu() -> void:
+	GM.gravity_vector = Vector2.DOWN # reset gravity
 	CS.despawn_all()
 	HS.despawn_all()
 	FTS.despawn_all()
